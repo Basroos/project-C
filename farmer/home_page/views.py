@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def home_index(request):
     return render(request, 'home_page/home.html')
+
+def login_index(request):
+    return render(request, 'login_page/login.html')
