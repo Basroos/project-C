@@ -20,8 +20,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home_page.urls'))
 ]
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')), # new
-]
