@@ -7,6 +7,17 @@ body{
     background-color:rgb(255, 255, 255);
 }
 
+.baba{
+    display:block;
+    background-color: green;
+    margin:10px;
+    text-decoration: none;
+    padding: 1em 1em;
+    position: absolute;
+    left: 130px;
+    top: 250px;
+}
+
 .login-box{
     width: 280px;
     position: absolute;
@@ -29,7 +40,7 @@ body{
     font-size: 20px;
     padding: 8px 0;
     margin: 8px 0;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #4caf50;
 }
 
 .textbox i{
@@ -43,13 +54,13 @@ body{
     outline: none;
     background: none;
     color: rgb(16, 211, 9);
-    width: 10px;
+    width: 80px;
     float: left;
     margin: 0 10px;
 
 }
 
-.btn{
+/*.btn{
     width: 100;
     background-color: rgb(16, 211, 9);
     border: 2px solid rgb(16, 211, 9);
@@ -70,5 +81,3 @@ body{
     cursor: pointer;
     margin: 12px 0;
 }
-
-
