@@ -10,12 +10,27 @@ body{
 .baba{
     display:block;
     background-color: green;
-    margin:10px;
+    margin-left: 0px;
     text-decoration: none;
     padding: 1em 1em;
     position: absolute;
-    left: 130px;
+    left: 200px;
     top: 250px;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+.baba-2{
+    display:block;
+    background-color: green;
+    margin-right: 0px;
+    text-decoration: none;
+    padding: 1em 1em;
+    position: absolute;
+    left: 70px;
+    top: 250px;
+    border: 1px solid black;
+    justify-content: space-between;
 }
 
 .login-box{
