@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+.farmers{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(200px, auto);
+    column-gap: 10px;
+}
+.farmer-info{
+    border: 2px solid grey;
+}
+a{
+    text-decoration: none;
+    color: green;
+}

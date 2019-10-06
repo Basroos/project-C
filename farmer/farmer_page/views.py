@@ -1,6 +1,7 @@
 from django.shortcuts import render
-
+from .models import Farmer
 # Create your views here.
 
 def farmer_index(request):
-    return render(request, 'farmer_page/farmer.html')
+    context = {'info': Farmer.objects.all()}
+    return render(request, 'farmer_page/farmer.html', context)
