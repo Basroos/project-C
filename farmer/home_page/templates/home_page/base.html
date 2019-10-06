@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <style>
+          @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+           @import url('https://fonts.googleapis.com/css?family=Anton|News+Cycle&display=swap');
+            </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{%block title%} - mysite {%endblock%}</title>
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <div id="header">
+        <h1>(placeholder name)</h1>
+      <h2> The place to buy your products straight of the farmer.</h22>
+    </div>
+    <div id="navbar">
+        <ul>
+            <li>Logo (placeholder name)</li>
+            <li><a class="active"href="{% url 'home_index' %}">Home</a></li>
+            <li><a href="{%url 'farmer-index'%}">Farmer</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Test</a></li>
+            <li style="float:right"><a href="{% url 'login_index' %}">Login</a></li>
+            <li style="float:right"><a href="../search_page/search.html">Search</a></li>
+        </ul>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

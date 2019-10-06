@@ -1,30 +1,38 @@
+{% extends 'home_page/base.html' %} 
 {%load static%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Farmers</title>
-    <link rel="stylesheet" href="{% static 'farmer_page/farmer.css' %}">
-</head>
-<body>
-    
+  <head>
+      {%block title%}Farmers{%endblock%}
+    {%block styles%}
+    <link rel="stylesheet" href="{%static 'farmer_page/farmer.css'%}">
+    <link rel="stylesheet" href="{%static 'home_page/home.css'%}">
+    {%endblock%}
+  </head>
+  {%block content%}
+  <body>
     <div class="farmers">
-       {%for x in info%} 
-        <div class="farmer-info">
-            <img src="{%static 'farmer_page/name.png' %}" alt="name icon">
-            <span><a href="#">{{x.name}}</a> <small>{{ x.company_name }}</small><hr></span>
-            <img src="{%static 'farmer_page/address.png' %}" alt="address icon">
-            <span>{{x.address}}</span><br><br>
-            <img src="{%static 'farmer_page/province.png' %}" alt="province icon">
-            <span>Province: {{x.province}}</span><br><br>
-            <img src="{% static 'farmer_page/phone.png' %}" alt="phone icon">
-            <span>{{x.phone_number}}</span><br><br>
-            <img src="{%static 'farmer_page/products.jpg' %}" alt="products icon">
-            <span>{{x.products}}</span>
-        </div>
-        {%endfor%}
+      {%for x in info%}
+      <div class="farmer-info">
+        <img src="{%static 'farmer_page/name.png' %}" alt="name icon" />
+        <span
+          ><a href="#">{{ x.name }}</a> <small>{{ x.company_name }}</small>
+          <hr
+        /></span>
+        <img src="{%static 'farmer_page/address.png' %}" alt="address icon" />
+        <span>{{ x.address }}</span
+        ><br /><br />
+        <img src="{%static 'farmer_page/province.png' %}" alt="province icon" />
+        <span>Province: {{ x.province }}</span
+        ><br /><br />
+        <img src="{% static 'farmer_page/phone.png' %}" alt="phone icon" />
+        <span>{{ x.phone_number }}</span
+        ><br /><br />
+        <img src="{%static 'farmer_page/products.jpg' %}" alt="products icon" />
+        <span>{{ x.products }}</span>
+      </div>
+      {%endfor%}
     </div>
-</body>
+  </body>
+  {%endblock%}
 </html>

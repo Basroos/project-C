@@ -6,6 +6,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: minmax(200px, auto);
     column-gap: 10px;
+    margin-top: 10px;
 }
 .farmer-info{
     border: 2px solid grey;
