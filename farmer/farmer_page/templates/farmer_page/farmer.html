@@ -16,14 +16,14 @@
       <div class="farmer-info">
         <img src="{%static 'farmer_page/name.png' %}" alt="name icon" />
         <span
-          ><a href="#">{{ x.name }}</a> <small>{{ x.company_name }}</small>
+          ><a href="#">{{ x.name }}</a> <span>{{ x.company_name }}</span>
           <hr
         /></span>
         <img src="{%static 'farmer_page/address.png' %}" alt="address icon" />
         <span>{{ x.address }}</span
         ><br /><br />
         <img src="{%static 'farmer_page/province.png' %}" alt="province icon" />
-        <span>Province: {{ x.province }}</span
+        <span>{{ x.province }}</span
         ><br /><br />
         <img src="{% static 'farmer_page/phone.png' %}" alt="phone icon" />
         <span>{{ x.phone_number }}</span
