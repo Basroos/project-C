@@ -30,7 +30,7 @@ body{
     font-size: 20px;
     padding: 8px 0;
     margin: 8px 0;
-    border-bottom: 1px solid #4caf50;
+    border-bottom: 1px solid  #4caf50;
 }
 
 .textbox i{
@@ -43,7 +43,7 @@ body{
     border: none;
     outline: none;
     background: none;
-    color: rgb(16, 211, 9);
+    color: rgb(0,0,0);
     width: 80px;
     float: left;
     margin: 0 10px;
