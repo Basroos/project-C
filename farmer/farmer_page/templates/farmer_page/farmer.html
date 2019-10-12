@@ -7,32 +7,27 @@
     {%block styles%}
     <link rel="stylesheet" href="{%static 'farmer_page/farmer.css'%}">
     <link rel="stylesheet" href="{%static 'home_page/home.css'%}">
-    {%endblock%}
+    {%endblock styles%}
   </head>
-  {%block content%}
-  <body>
-    <div class="farmers">
-      {%for x in info%}
-      <div class="farmer-info">
-        <img src="{%static 'farmer_page/name.png' %}" alt="name icon" />
-        <span
-          ><a href="#">{{ x.name }}</a> <span>{{ x.company_name }}</span>
-          <hr
-        /></span>
-        <img src="{%static 'farmer_page/address.png' %}" alt="address icon" />
-        <span>{{ x.address }}</span
-        ><br /><br />
-        <img src="{%static 'farmer_page/province.png' %}" alt="province icon" />
-        <span>{{ x.province }}</span
-        ><br /><br />
-        <img src="{% static 'farmer_page/phone.png' %}" alt="phone icon" />
-        <span>{{ x.phone_number }}</span
-        ><br /><br />
-        <img src="{%static 'farmer_page/products.jpg' %}" alt="products icon" />
-        <span>{{ x.products }}</span>
-      </div>
-      {%endfor%}
+
+{%block content%}
+
+<div class="container-fluid">
+  <div class="row">
+    {%for x in info%}
+    <div class="col-md-5 border border-info rounded mt-3 mx-5">
+      <i class="fas fa-user"></i>
+      {{x.name}}
+      <br>
+      <i class="fab fa-product-hunt"></i>
+      {{x.products}}
+    <div class="row">
+      <a class="btn btn-outline-warning my-2 mx-2 stretched-link" href="{% url 'profile-index' x.id %}">See Profile</a>
+     </div>
     </div>
-  </body>
-  {%endblock%}
-</html>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock content%}
+

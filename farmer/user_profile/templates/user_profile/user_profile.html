@@ -1,0 +1,26 @@
+{% extends 'home_page/base.html' %} {%load static%} {%block styles%}
+<link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
+{%endblock%} {%block content%}
+<div class="container">
+  <div class="display-4 mx-auto text-center">
+    Your Products
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 ml-auto">
+    <div class="card">
+      <h5 class="card-header">
+        Add Product
+      </h5>
+      <div class="card-body">
+        <h5 class="card-title">
+          Do you want to advertise your products? Do it right now!
+        </h5>
+        <p class="card-text">You can add maximum 5 products today</p>
+        <a href="" class="btn btn-outline-primary">Add Product</a>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock content%}

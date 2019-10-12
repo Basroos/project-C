@@ -1,0 +1,11 @@
+{% extends 'home_page/base.html'%} 
+{%load static%} 
+
+    {%block styles%}
+    <link rel="stylesheet" href="{%static 'farmer_page/farmer.css'%}">
+    <link rel="stylesheet" href="{%static 'home_page/home.css'%}">
+    {%endblock%}
+
+{%block content%}
+    {{ farmer.products}}
+{%endblock%}
