@@ -1,0 +1,111 @@
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f2f6e9;
+}
+#home {
+	background: url(images/mountain-sky.jpeg) no-repeat 50% 50%;
+	display: table;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+}
+
+.navbar {
+	background:#6ab446;
+	padding: 1%; 
+	margin-left: 3%;
+	margin-right: 3%;
+ }
+ .nav-link,
+ .navbar-brand {
+	color: #fff;
+	cursor: pointer;
+ }
+ .nav-link {
+	margin-right: 1em !important;
+	padding: 0px !important; 
+ }
+ .nav-link:hover {
+	color: #000;
+ }
+ .navbar-collapse {
+	justify-content: flex-end;
+ }
+ 
+ #profile_nav {
+	margin-left: 1em !important;
+ }
+.landing-text {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+th {
+  width: 40%;
+}
+
+.fakeimg {
+  height: 400px;
+  background: #aaa;
+}
+
+.features {
+  margin: 4em auto;
+  padding: 1em;
+  position: relative;
+}
+.feature-title {
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.features img {
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  margin-bottom: 16px;
+}
+
+#info {
+  padding: 4%;
+  height: 100%;
+  background-color: rgb(46, 46, 46);
+}
+
+#profile_pic {
+  max-height: 450px;
+  margin-right: 5% !important;
+}
+
+#general_info {
+  height: 460px;
+}
+
+#popular_products {
+  padding: 4%;
+}
+
+#products {
+  border-bottom: 2px solid black;
+  margin-bottom: 3%;
+}
+
+#product {
+  min-height: 650px;
+  max-height: 650px;
+}
+
+#product_img {
+  height: 230px; 
+}
+
+footer {
+  background-color: #aaa;
+  min-height: 200px;
+  text-align: center;
+}
