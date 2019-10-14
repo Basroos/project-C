@@ -1,55 +1,242 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-      <style>
-          @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-          </style>
-          <style>
-              @import url('https://fonts.googleapis.com/css?family=Anton|News+Cycle&display=swap');
-              </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="{% static 'home_page/home.css' %}">
-    <title>Farm Platform</title>
-  </head>
-  <body>
-  
-    <div id="header">
-        <h1>(placeholder name)</h1>
-      <h2> The place to buy your products straight of the farmer.</h22>
-    </div>
-    <div id="navbar">
-        <ul>
-            <li>Logo (placeholder name)</li>
-            <li><a class="active"href="#">Home</a></li>
-            <li><a href="#">Farmer</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Test</a></li>
-            <li style="float:right"><a href="../login_page/login.html">Login</a></li>
-            <li style="float:right"><a href="../search_page/search.html">Search</a></li>
-        </ul>
-    </div>
-    <div id="general">
-      <div class="info-platform">
-        <p>General-info voor website</p>
-      </div>
-      <div class="info-product-1">
-        <p>Welcome to the (placeholder name) where you can buy 100% biological products</p>
-      </div>
-      <div class="info-product-2">
-        <p>Welcome to the (placeholder name) where you can buy 100% biological products test 2</p>
-      </div>
-      <div class="info-product-3">
-        <p>Welcome to the (placeholder name) where you can buy 100% biological products test 2</p>
-      </div>
-      <div class="info-product-4">
-        <p>Welcome to the (placeholder name) where you can buy 100% biological products test 2</p>
-      </div>
-    </div>
-    <div id="popular-products">
+<html>
+<head>
+  <title>Bootstrap Landing Page Website Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/home.css' %}">
+</head>
 
+<body>
+
+	<div id="home">
+		<div class="landing-text">
+			<h1>FarmerStore</h1>
+			<h4>Your place for fresh and tasty products straight from the land.</h4>
+			<br>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand" href="#">
+            <img src="http://www.bobmazzo.com/wp-content/uploads/2009/07/bobmazzoCD.jpg" width="30" height="30" >
+            </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'home_index'  %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Farmers</a>
+                        </li>
+
+                    </ul>
+
+                    <form id="searchForm" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                    <ul class="navbar-nav ">
+                        <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
+                        <li id="profile_nav"class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ( Placeholder name)
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                                <a class="dropdown-item" href="profile.html">My profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Messages</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Preferences</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            </nav>
+		</div>
+	</div>
+    <div id="second">
+        <div id="infodiv">   
+	        <p class="lead text-justify">Here comes some general info</p>
+        </div>
+
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <h1> Popular products</h1>
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <!--Card-->
+                <div class="carousel-item active" id="product"  class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                    <img id="product_img" src="{% static "home_page/mais.jpg" %}" class="card-img-top"
+                        alt="">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                            <th>Product name</th>
+                                <td>Mais</td>
+                            </tr>
+                            <tr>
+                            <th>Description</th>
+                                <td>A very good and tasty product</td>
+                            </tr>
+                            <tr>
+                            <th>Harvest date</th>
+                                <td>6-10-2019</td>
+                            </tr>
+                            <tr>
+                            <th>Upload date</th>
+                                <td>7-10-2019</td>
+                            </tr>
+                            <tr>
+                            <th>Stock</th>
+                                <td>10 items</td>
+                            </tr>
+                            <tr>
+                            <th>Price</th>
+                                <td>5 euro/kg</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                    </div>
+
+                </div>
+                <!--Card-->
+                <div class="carousel-item" id="product" class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                    <img id="product_img" src="{% static "home_page/graan.jpg" %}" class="card-img-top"
+                        alt="">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                            <th>Product name</th>
+                                <td>Graan</td>
+                            </tr>
+                            <tr>
+                            <th>Description</th>
+                                <td>A very good and tasty product.</td>
+                            </tr>
+                            <tr>
+                                <th>Harvest date</th>
+                                <td>1-10-2019</td>
+                            </tr>
+                            <tr>
+                                <th>Upload date</th>
+                                <td>5-10-2019</td>
+                            </tr>
+                            <tr>
+                                <th>Stock</th>
+                                <td>10 items</td>
+                            </tr>
+                            <tr>
+                                <th>Price</th>
+                                <td>3 euro/kg</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+                
+                <!--Card-->
+                <div class="carousel-item"id="product" class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                    <img id="product_img" src="{% static "home_page/broccoli.jpg" %}" class="card-img-top"
+                        alt="">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                            <th>Product name</th>
+                                <td>Broccoli</td>
+                            </tr>
+                            <tr>
+                            <th>Description</th>
+                                <td>A very good and tasty product</td>
+                            </tr>
+                            <tr>
+                                <th>Harvest date</th>
+                                <td>3-10-2019</td>
+                            </tr>
+                            <tr>
+                                <th>Upload date</th>
+                                <td>5-10-2019</td>
+                            </tr>
+                            <tr>
+                                <th>Stock</th>
+                                <td>10 items</td>
+                            </tr>
+                            <tr>
+                                <th>Price</th>
+                                <td>4 euro/kg</td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                    </div>
+
+                </div>
+                <!--/.Card-->
+            </div>
+            
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev" >
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
     </div>
-  </body>
+</body>
 </html>
