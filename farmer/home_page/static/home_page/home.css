@@ -1,118 +1,119 @@
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:900');
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:900");
 
-html, body {
-	height: 100%;
-	width: 100%;
-	font-family: sans-serif;
-	color: #36342F;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  color: #36342f;
 }
 
 #home {
-	background: url('../home_page/background.jpg') no-repeat 50% 50%;
-	display: table;
-	height: 100%;
-	width: 100%;
-	background-size: cover;
+  background: url("./background.jpg") no-repeat 50% 50%;
+  display: table;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
 }
 
 .navbar {
-	background:#6ab446;
-	padding: 1%; 
-	margin-left: 5%;
-	margin-right: 5%;
- }
- .nav-link,
- .navbar-brand {
-	color: #fff;
-	cursor: pointer;
- }
- .nav-link {
-	margin-right: 1em !important;
-	padding: 0px !important; 
- }
- .nav-link:hover {
-	color: #000;
- }
- .navbar-collapse {
-	justify-content: flex-end;
- }
- 
- #profile_nav {
-	margin-left: 1em !important;
- }
+  background: #6ab446;
+  padding: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.nav-link,
+.navbar-brand {
+  color: #fff;
+  cursor: pointer;
+}
+.nav-link {
+  margin-right: 1em !important;
+  padding: 0px !important;
+}
+.nav-link:hover {
+  color: #000;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+#profile_nav {
+  margin-left: 1em !important;
+}
 .landing-text {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 h1 {
-	font-family: 'Alegreya Sans', sans-serif;
-	font-size: 700%;
-	line-height: .8;
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 700%;
+  line-height: 0.8;
 }
 h3 {
-	font-size: 260%;
-	font-weight: 600;
+  font-size: 260%;
+  font-weight: 600;
 }
 p {
-	padding: 3%;
+  padding: 3%;
 }
 
 #second {
-	width: 100%;
-	background-color: #6ab446;
-	padding: 2%;
+  width: 100%;
+  background-color: #6ab446;
+  padding: 2%;
 }
 
 #infodiv {
-	margin-left: 15%;
-	text-align: center;
-	width: 70%;
-	height: auto;
-	background-color: #ffffff;
-	border: 1px solid black;
+  margin-left: 15%;
+  text-align: center;
+  width: 70%;
+  height: auto;
+  background-color: #ffffff;
+  border: 1px solid black;
 }
 
 #demo {
-	text-align: center;
-	margin-top: 5%;
-	padding: 4%;
-	border: 1px solid black;
- }
+  text-align: center;
+  margin-top: 5%;
+  padding: 4%;
+  border: 1px solid black;
+}
 
- #demo h1{
-	padding: 3%;
-	text-decoration: underline;
-	font-weight: bold;
- }
- 
- #products {
-	border-bottom: 2px solid black;
-	margin-bottom: 3%;
- }
- 
- #product {
-	background-color: white;
-	width: 40%;
-	margin-left: 30%;
-	min-height: 650px;
-	max-height: 650px;
-	margin-right: 500px; 
-	overflow: auto;
- }
- 
- #product_img {
-	height: 230px; 
- }
+#demo h1 {
+  padding: 3%;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#products {
+  border-bottom: 2px solid black;
+  margin-bottom: 3%;
+}
+
+#product {
+  background-color: white;
+  width: 40%;
+  margin-left: 30%;
+  min-height: 650px;
+  max-height: 650px;
+  margin-right: 500px;
+  overflow: auto;
+}
+
+#product_img {
+  height: 230px;
+}
 
 @media (max-width: 768px) {
-	h1 {
-		font-size: 500%;
-	}
-	h3 {
-		font-size: 200%;
-	}
-	.btn-default {
-		font-size: 130%;
-	}
+  h1 {
+    font-size: 500%;
+  }
+  h3 {
+    font-size: 200%;
+  }
+  .btn-default {
+    font-size: 130%;
+  }
 }
