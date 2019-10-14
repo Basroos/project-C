@@ -5,7 +5,8 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def farmer_index(request):
-    context = {'info': Farmer.objects.all()}
+    context = {'info': Farmer.objects.all(),
+                'navigation':'farmer'}
     return render(request, 'farmer_page/farmer.html', context)
 
 
