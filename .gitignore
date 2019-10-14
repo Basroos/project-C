@@ -1,3 +1,4 @@
+farmer/db.sqlite3
 
 farmer/farmer/__pycache__/urls.cpython-37.pyc
 farmer/farmer/__pycache__/settings.cpython-37.pyc
@@ -7,3 +8,9 @@ farmer/home_page/__pycache__/views.cpython-37.pyc
 farmer/farmer/__pycache__/settings.cpython-37.pyc
 farmer/farmer/__pycache__/urls.cpython-37.pyc
 farmer/home_page/__pycache__/views.cpython-37.pyc
+.vscode/settings.json
+.vscode/settings.json
+farmer/farmer/__pycache__/__init__.cpython-37.pyc
+*.pyc
+*.pyc
+*.pyc
