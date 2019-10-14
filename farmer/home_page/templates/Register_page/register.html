@@ -9,24 +9,13 @@
     <title>Document</title>
 </head>
 <body>
-  <div class="login-box">
-    <h1>Register</h1>
-  
- <div class="textbox">
-    <i class="fa fa-user" aria-hidden="true"></i>
-   <input type="text" placeholder="Username" name="" value="">
-  </div>
-  <div class="textbox">
-     <i class="fa fa-lock" aria-hidden="true"></i>
-    <input type="password" placeholder="password" name="" value="">
-    </div>
-   <div class="textbox">
-    <i class="fa fa-envelope" aria-hidden="true"></i>
-     <input type="email" placeholder="email" name="" value="">
-   </div>
-
-   <input class="btn", type="button", name="", value="Register">
-  </div>
-
+{% block content %}
+   <h1>Create new account</h1>
+   <form method="POST">
+        {% csrf_token %}
+       {{form.as_p}}
+       <button>Register</button>     
+   </form>
+{% endblock %}
 </body>
 </html>
