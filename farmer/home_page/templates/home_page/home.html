@@ -1,3 +1,4 @@
+{% extends 'home_page/base.html'%}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -14,63 +15,7 @@
 </head>
 
 <body>
-
-	<div id="home">
-		<div class="landing-text">
-			<h1>FarmerStore</h1>
-			<h4>Your place for fresh and tasty products straight from the land.</h4>
-			<br>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-                <a class="navbar-brand" href="#">
-            <img src="http://www.bobmazzo.com/wp-content/uploads/2009/07/bobmazzoCD.jpg" width="30" height="30" >
-            </a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'home_index'  %}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Farmers</a>
-                        </li>
-
-                    </ul>
-
-                    <form id="searchForm" class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-
-                    <ul class="navbar-nav ">
-                        <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-                        <li id="profile_nav"class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ( Placeholder name)
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-                                <a class="dropdown-item" href="profile.html">My profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Messages</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Preferences</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-
-            </nav>
-		</div>
-	</div>
+    {% block content%}
     <div id="second">
         <div id="infodiv">   
 	        <p class="lead text-justify">Here comes some general info</p>
@@ -138,7 +83,7 @@
 
                     <!--Card image-->
                     <div class="view overlay">
-                    <img id="product_img" src="{% static "home_page/graan.jpg" %}" class="card-img-top"
+                    <img id="product_img" src="{% static 'home_page/graan.jpg' %}" class="card-img-top"
                         alt="">
                     <a href="#">
                         <div class="mask rgba-white-slight"></div>
@@ -185,7 +130,7 @@
 
                     <!--Card image-->
                     <div class="view overlay">
-                    <img id="product_img" src="{% static "home_page/broccoli.jpg" %}" class="card-img-top"
+                    <img id="product_img" src="{% static 'home_page/broccoli.jpg' %}" class="card-img-top"
                         alt="">
                     <a href="#">
                         <div class="mask rgba-white-slight"></div>
@@ -237,5 +182,6 @@
             </a>
         </div>
     </div>
+    {%endblock content%}
 </body>
 </html>
