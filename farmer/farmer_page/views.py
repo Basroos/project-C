@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 def farmer_index(request):
     context = {'info': Farmer.objects.all(),
-                'navigation':'farmer'}
+                'navigation':'farmer',}
     return render(request, 'farmer_page/farmer.html', context)
 
 
