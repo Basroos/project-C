@@ -59,6 +59,14 @@
                         <li id="profile_nav"class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ( Placeholder name)
+                                {% if user.is_authenticated %}
+                                 <a href="{% url 'login_url' %}">Logout</a>
+
+                                {% else %}
+                                <a href="{% url 'login_url' %}">Login</a>
+                                <a href="{% url 'register_url' %}">Register</a>
+
+                                {% endif %}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navDropDownLink">
                                 <a class="dropdown-item" href="profile.html">My profile</a>

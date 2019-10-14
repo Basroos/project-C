@@ -9,4 +9,5 @@ urlpatterns = [
     path('',include('home_page.urls')),
     path('farmer/', include('farmer_page.urls')),
     path('profile/', include('user_profile.urls')),
+    path('login/', include('User.urls')),
 ]

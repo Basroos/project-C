@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'User',
     'home_page.apps.HomePageConfig',
     'farmer_page.apps.FarmerPageConfig',
     'user_profile.apps.UserProfileConfig',
@@ -120,3 +121,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/profile/'
