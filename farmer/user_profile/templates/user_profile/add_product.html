@@ -1,5 +1,6 @@
 {% extends 'home_page/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'home_page/home.css'%}" />
 {% endblock styles%}
@@ -10,20 +11,13 @@
         <form action="" method="POST">
 
             <div class="row">
+                {% csrf_token %}
                 <h1>Product Information</h1>
                 <p>Fill in this form to create the proudct</p>
                 <hr>
-
-                    <label for="productName"><b> Product Name </b></label>
-                    <input type="text" class="col-md-10" name="ProductName" value="" required> 
-
-                    <label for="ProductDescription">Product Description </label>
-                    <input type="text" class="col-md-8"name="ProductDescription" value="" required>
-
-                    <label for="ProductPrice">Product Price:</label>
-                    <input type="text" class="col-md-8"name="ProductPrice" value="" required>
-                    <input type="submit" class="col-md-8" value="Add new product">
-               </div>
+                <div class="col-md-12 text-left">{{ form|crispy}}</div>
+                <button class="btn btn-warning" type="submit">Add product</button>
+            </div>
         </form>
-</div>
+    </div>
 {% endblock content%}
