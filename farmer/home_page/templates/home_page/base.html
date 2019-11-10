@@ -42,7 +42,7 @@
                         </li>
 
                         <li class="{% if navigation == 'products' %} nav-item active {% else %} nav-item {% endif %}">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" href="{% url 'user-profile' %}">Products</a>
                         </li>
                         <li class="{% if navigation == 'farmer' %} nav-item active {% else %} nav-item {% endif %}">
                             <a class="nav-link" href="{% url 'farmer-index' %}">Farmers</a>
