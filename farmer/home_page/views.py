@@ -5,9 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 # Create your views here.
 
-
 def home_index(request):
-    return render(request, 'home_page/home.html')
+    return render(request, 'home_page/home.html', {'navigation':'home'})
 
 def login_index(request):
     return render(request, 'login_page/login.html')

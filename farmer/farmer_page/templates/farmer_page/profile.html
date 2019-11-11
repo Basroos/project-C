@@ -1,0 +1,351 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'farmer_page/profile.css' %}">
+</head>
+<body>
+
+<div id="home">
+    <div class="landing-text">
+      <h1>FarmerStore</h1>
+      <h4>The place to buy your products straight of the farmer.</h4>
+      <br>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand" href="#">
+            <img src="http://www.bobmazzo.com/wp-content/uploads/2009/07/bobmazzoCD.jpg" width="30" height="30" >
+            </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home_index'  %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user-profile' %}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'farmer-index' %}">Farmers</a>
+                        </li>
+
+                    </ul>
+
+                    <form id="searchForm" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
+                    <ul class="navbar-nav ">
+                        <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
+                        <li id="profile_nav"class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ( Placeholder name)
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                                <a class="dropdown-item active" href="#">My profile <span class="sr-only">(current)</span></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Messages</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Preferences</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            </nav>
+    </div>
+  </div>
+
+<!--Main layout-->
+<main class="mt-5">
+
+    <!--Main container-->
+    <div class="container">
+
+      <!--Grid row-->
+      <div id="info" class="row justify-content-md-center">
+
+        <!--Grid column-->
+        <div id="profile_pic" class="col-md-4 mb-4">
+
+          <div class="view overlay z-depth-1-half">
+            <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="">
+            <div class="mask rgba-white-light"></div>
+          </div>
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        {%block content%}
+        <div class="col-md-6 mb-4">
+          <div id="general_info" class="card">
+            <div class="card-body" class="table-responsive-sm">
+              <h4 class="card-title">General info</h4>
+                <table class="table">
+                  <tbody>
+                      <tr>
+                        <th>First Name</th>
+                          <td>{{farmer.name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Last Name</th>
+                          <td>Carter</td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                          <td>johncarter@mail.com</td>
+                      </tr>
+                      <tr>
+                        <th>Farm Name</th>
+                          <td>{{farmer.company_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th>
+                          <td>{{farmer.address}}</td>
+                      </tr>
+                      <tr>
+                        <th>Province</th>
+                          <td>{{farmer.province}}</td>
+                      </tr>
+                      <tr>
+                        <th>Phonenumber</th>
+                          <td>{{farmer.phone_number}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+          {%endblock content%}
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div id="popular_products" class="row">
+        
+        <div id="products" class="col-12 col-sm-12">
+          <h1>Popular products</h1> 
+        </div>
+
+        <div class="w-100"></div>
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <!--Card-->
+          <div id="product" class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img id="product_img" src="{% static 'home_page/mais.jpg' %}" class="card-img-top"
+                alt="">
+              <a href="#">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                    <tr>
+                      <th>Product name</th>
+                        <td>Mais</td>
+                    </tr>
+                    <tr>
+                      <th>Description</th>
+                        <td>A very good and tasty product</td>
+                    </tr>
+                    <tr>
+                      <th>Harvest date</th>
+                        <td>6-10-2019</td>
+                    </tr>
+                    <tr>
+                      <th>Upload date</th>
+                        <td>7-10-2019</td>
+                    </tr>
+                    <tr>
+                      <th>Stock</th>
+                        <td>10 items</td>
+                    </tr>
+                    <tr>
+                      <th>Price</th>
+                        <td>5 euro/kg</td>
+                    </tr> 
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <!--Card-->
+          <div id="product" class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img id="product_img" src="{% static 'home_page/graan.jpg' %}" class="card-img-top"
+                alt="">
+              <a href="#">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                    <tr>
+                      <th>Product name</th>
+                        <td>Graan</td>
+                    </tr>
+                    <tr>
+                      <th>Description</th>
+                        <td>A very good and tasty product.</td>
+                    </tr>
+                    <tr>
+                        <th>Harvest date</th>
+                          <td>1-10-2019</td>
+                      </tr>
+                      <tr>
+                        <th>Upload date</th>
+                          <td>5-10-2019</td>
+                      </tr>
+                      <tr>
+                        <th>Stock</th>
+                          <td>10 items</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                          <td>3 euro/kg</td>
+                      </tr> 
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <!--Card-->
+          <div id="product" class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img id="product_img" src="{% static 'home_page/broccoli.jpg' %}" class="card-img-top"
+                alt="">
+              <a href="#">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!--Card content-->
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                    <tr>
+                      <th>Product name</th>
+                        <td>Broccoli</td>
+                    </tr>
+                    <tr>
+                      <th>Description</th>
+                        <td>A very good and tasty product</td>
+                    </tr>
+                    <tr>
+                        <th>Harvest date</th>
+                          <td>3-10-2019</td>
+                      </tr>
+                      <tr>
+                        <th>Upload date</th>
+                          <td>5-10-2019</td>
+                      </tr>
+                      <tr>
+                        <th>Stock</th>
+                          <td>10 items</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                          <td>4 euro/kg</td>
+                      </tr> 
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+    <!--Main container-->
+
+  </main>
+  <!--Main layout-->
+
+  <!-- Footer -->
+  <footer class="page-footer font-small indigo pt-4 mt-4">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-12 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns here to organize your footer content.</p>
+
+        </div>
+        <!-- Grid column -->
+
+
+    <!-- Copyright 
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+    </div>
+     Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+</body>
+</html>
