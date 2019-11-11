@@ -32,13 +32,13 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="{% url 'home_index'  %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" href="{% url 'user-profile' %}">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Farmers</a>
+                            <a class="nav-link" href="{% url 'farmer-index' %}">Farmers</a>
                         </li>
 
                     </ul>
@@ -86,7 +86,7 @@
         <div id="profile_pic" class="col-md-4 mb-4">
 
           <div class="view overlay z-depth-1-half">
-            <img src="images/avatar.jpg" class="card-img-top" alt="">
+            <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="">
             <div class="mask rgba-white-light"></div>
           </div>
 
@@ -158,7 +158,7 @@
 
             <!--Card image-->
             <div class="view overlay">
-              <img id="product_img" src="images/mais.jpg" class="card-img-top"
+              <img id="product_img" src="{% static 'home_page/mais.jpg' %}" class="card-img-top"
                 alt="">
               <a href="#">
                 <div class="mask rgba-white-slight"></div>
@@ -211,7 +211,7 @@
 
             <!--Card image-->
             <div class="view overlay">
-              <img id="product_img" src="images/graan.jpg" class="card-img-top"
+              <img id="product_img" src="{% static 'home_page/graan.jpg' %}" class="card-img-top"
                 alt="">
               <a href="#">
                 <div class="mask rgba-white-slight"></div>
@@ -264,7 +264,7 @@
 
             <!--Card image-->
             <div class="view overlay">
-              <img id="product_img" src="images/broccoli.jpg" class="card-img-top"
+              <img id="product_img" src="{% static 'home_page/broccoli.jpg' %}" class="card-img-top"
                 alt="">
               <a href="#">
                 <div class="mask rgba-white-slight"></div>

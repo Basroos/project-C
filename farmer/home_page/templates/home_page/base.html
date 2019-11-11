@@ -37,13 +37,14 @@
             </a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <li class="{% if navigation == 'home'%} nav-item active {% else %} nav-item {% endif %}">
                             <a class="nav-link" href="{% url 'home_index'  %}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+
+                        <li class="{% if navigation == 'products' %} nav-item active {% else %} nav-item {% endif %}">
+                            <a class="nav-link" href="{% url 'user-profile' %}">Products</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="{% if navigation == 'farmer' %} nav-item active {% else %} nav-item {% endif %}">
                             <a class="nav-link" href="{% url 'farmer-index' %}">Farmers</a>
                         </li>
 
@@ -68,6 +69,7 @@
                                 <a href="{% url 'register_url' %}">Register</a>
 
                                 {% endif %}
+                                {{user.username}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navDropDownLink">
                                 <a class="dropdown-item" href="profile.html">My profile</a>
