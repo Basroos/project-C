@@ -22,7 +22,7 @@ def post_product(request):
             description = form.cleaned_data['product_description']
             price = form.cleaned_data['product_price']
             user = request.user
-            product = Product(name, description, price, user)
+            product = Product(product_name=name, product_description=description, product_price=price, product_user=user)
             product.save()
             return render(request, 'home_page/home.html', {'product': product})
         else:
