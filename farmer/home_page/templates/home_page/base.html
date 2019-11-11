@@ -54,34 +54,37 @@
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    {% if user.is_authenticated %}
 
                     <ul class="navbar-nav ">
                         <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
+                        
+                        <p style="margin:2px; color:white;">{{user.username}}</p>
                         <li id="profile_nav"class="nav-item dropdown">
+                        
+                            
                             <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ( Placeholder name)
-                                {% if user.is_authenticated %}
-                                 <a href="{% url 'login_url' %}">Logout</a>
-                                 <a href="{% url 'register_url' %}">Register</a>
-
-                                {% else %}
-                                <a href="{% url 'login_url' %}">Login</a>
-                                <a href="{% url 'register_url' %}">Register</a>
-
-                                {% endif %}
-                                {{user.username}}
+                                
+                                    <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+                                    <a class="dropdown-item" href="profile.html">My profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Messages</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Preferences</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout_url' %}">Logout</a>
+                                </div>
+                                 
+                                
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navDropDownLink">
-                                <a class="dropdown-item" href="profile.html">My profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Messages</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Preferences</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="messages.html">Logout</a>
-                            </div>
+                            
                         </li>
+                        
                     </ul>
+                    {% else %}
+                        <a href="{% url 'login_url' %}">Login</a>
+                        <a href="{% url 'register_url' %}">Register</a>
+                    {% endif %}
 
                 </div>
             </div>

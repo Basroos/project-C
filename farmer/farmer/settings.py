@@ -123,4 +123,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/farmer'
+LOGOUT_REDIRECT_URL = 'home_index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
