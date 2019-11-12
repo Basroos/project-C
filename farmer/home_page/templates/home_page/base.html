@@ -53,6 +53,7 @@
                     {% block search %}
                     {% endblock search%}
 
+                    {% if user.is_authenticated %}
                     <ul class="navbar-nav ">
                         <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
                         
