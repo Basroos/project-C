@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'User',
     'home_page.apps.HomePageConfig',
     'farmer_page.apps.FarmerPageConfig',
     'user_profile.apps.UserProfileConfig',
@@ -104,8 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -124,6 +121,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/farmer'
-LOGOUT_REDIRECT_URL = 'home_index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
