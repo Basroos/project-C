@@ -9,6 +9,8 @@ try:
         name = forms.CharField(max_length=60, required=False, help_text='Enter your full name')
         farm = forms.CharField(max_length=30, required=False, help_text='Enter the name of your farm/company')
         phone_number = forms.CharField(max_length=10, help_text='enter a valid phone number')
+        adress = forms.CharField(max_length=10, help_text='enter a existing adress')
+
 
 
         class Meta:
