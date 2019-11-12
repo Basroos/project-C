@@ -26,5 +26,5 @@ def post_product(request):
             product.save()
             return render(request, 'home_page/home.html', {'product': product})
         else:
-            form = ProductForm()
+            form = ProductForm() #baba
     return render(request, template_name, {'form':form})
