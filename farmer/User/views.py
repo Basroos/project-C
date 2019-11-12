@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, LogoutView
 from User.forms import SignUpForm
 from django.contrib.auth.hashers import make_password
-
+from farmer_page.models import Farmer
 
 # Create your views here (Functions or classes.)
 
@@ -26,9 +26,19 @@ def registerView(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('Username')
+            username = form.cleaned_data.get('username')
             raw_pass = form.cleaned_data.get('password1')
             raw_pass = make_password(form.cleaned_data.get('password1'))
+            email = form.cleaned_data.get('email')
+            farm = form.cleaned_data.get('farm')
+            address = form.cleaned_data.get('address')
+            age = form.cleaned_data.get('age')
+            province = form.cleaned_data.get('province')
+            phone = form.cleaned_data.get('phone_number')
+            products = form.cleaned_data.get('products')
+            farmer = Farmer(name=username, address=address, age=age,
+            province=province, company_name=farm, phone_number=phone, products=products)
+            farmer.save()
             #user = user.set_password(password1)
            # login(request, user)
             return redirect('login_url')

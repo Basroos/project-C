@@ -13,7 +13,7 @@ try:
 
 
 
-        class Meta:
+        class Meta:#asdasd
             model = User
             fields = ('username', 'name', 'farm', 'email', 'phone_number', 'password1', 'password2')
 except:
