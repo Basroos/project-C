@@ -12,16 +12,17 @@
 
 {%block content%}
 
-{% if not result %}
-  <h1 class="text-center">No search matched</h1>
+{% if empty %}
+  <h1 class="text-center">No result matched</h1>
+{%endif%}
 
-{% elif result %}
+{% if result %}
   <div class="container-fluid">
   <div class="row">
     {% for x in result%}
     <div class="col-md-5 border border-info rounded mt-3 mx-5">
       <i class="fas fa-user"></i>
-        {{x}}
+        {{x.name}}
       <br>
       <i class="fab fa-product-hunt"></i>
         {{x.address}}
@@ -30,7 +31,6 @@
      </div>
     </div>
     {%endfor%}
-
 {% else %}
 <div class="container-fluid">
   <div class="row">

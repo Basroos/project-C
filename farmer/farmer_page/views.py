@@ -24,5 +24,9 @@ def search_farmer(request):
     if query_farmer:
         # result = Farmer.objects.filter(Q(address__icontains=query_farmer) | Q(products__icontains=query_farmer))
         result = Farmer.objects.filter(name__username__startswith=query_farmer)
+        if len(result) < 1:
+            empty = True
+        else:
+            empty = False
 
-    return render(request, template, {'result':result})
+    return render(request, template, {'result':result, 'empty':empty})
