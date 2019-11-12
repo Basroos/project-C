@@ -10,7 +10,16 @@
     {%endblock styles%}
   </head>
 
+{%block search%}
+<form id="searchForm" class="form-inline my-2 my-lg-0" method="GET" action="{% url 'farmer-search'%}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search for farmer" name="query" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+</form>
+{%endblock search%}
+
 {%block content%}
+
+
 
 {% if empty %}
   <h1 class="text-center">No result matched</h1>

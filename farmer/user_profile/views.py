@@ -9,6 +9,17 @@ def user_profile(request):
     context = {'product':Product.objects.all()}
     return render(request, template_name, context)
 
+def search_product(request):
+    template = 'user_profile/product.html'
+    query_product = request.GET.get("query")
+    if query_product:
+        result = Product.objects.filter(product_name__startswith=query_product)
+        if len(result) < 1:
+            empty = True
+        else:
+            empty = False
+    return render(request, template, {"result":result, 'empty':empty})
+
 def add_product(request):
     form = ProductForm()
     template_name = 'user_profile/add_product.html'
