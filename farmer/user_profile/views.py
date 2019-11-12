@@ -5,8 +5,9 @@ from profile_page.models import Farmer
 # Create your views here.
 
 def user_profile(request):
-    template_name = 'user_profile/user_profile.html'
-    return render(request, template_name)
+    template_name = 'user_profile/product.html'
+    context = {'product':Product.objects.all()}
+    return render(request, template_name, context)
 
 def add_product(request):
     form = ProductForm()
@@ -26,7 +27,7 @@ def post_product(request):
             print(user)
             product = Product(product_name=name, product_description=description, product_price=price, product_user=user)
             product.save()
-            return render(request, 'home_page/home.html', {'product': product})
+            return render(request, template_name, {'product': product})
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
