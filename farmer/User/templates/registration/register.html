@@ -27,33 +27,109 @@ Include the above in your HEAD tag ---------->
          margin: 0;
          padding: 0;
          background-color: green;
-         height: 100vh;
+         height: 98vh;
       }
-      #login .container #login-row #login-column #login-box {
-         margin-top: 50px;
-         max-width: 600px;
-         height: 500px;
-         border: 1px solid #9C9C9C;
+      /* Style the tab */
+        .tab {
+        overflow: hidden;
+        margin-top: 1%;
+        margin-left: 30%;
+         max-width: 40%;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        }
+        /* Style the buttons inside the tab */
+        .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        width:50%;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+        background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+        background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+        display: none;
+        border: 1px solid #ccc;
+        margin-left:30%;
+         max-width: 40%;
+         max-height: 90%;
          background-color: #EAEAEA;
-      }
-      #login .container #login-row #login-column #login-box #login-form {
-         padding: 20px;
-      }
-      #login .container #login-row #login-column #login-box #login-form #register-link {
-         margin-top: -85px;
-      }
+         padding-top: 10px;
+        }
+     
    </style>
 </head>
 <body>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Register form</h3>
-        <div class="container">
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'loginFarmer')" id="defaultOpen">Farmer</button>
+        <button class="tablinks" onclick="openCity(event, 'loginCustomer')">Customer</button>
+    </div>
+    <div id="loginFarmer" class="tabcontent">
+        <div class="container-fluid">
             <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
+                <div id="login-column" class="col-md-8">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="" method="post">
                         {% csrf_token %}
-                            <h3 class="text-center text-info">Register</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>  
+                            <div class="form-group">
+                                <label for="email" class="text-info">Email-Adress:</label><br>
+                                <input type="text" name="emailaddress" id="emailaddress" class="form-control">
+                            </div> 
+                            <div class="form-group">
+                                <label for="email" class="text-info">Address:</label><br>
+                                <input type="text" name="emailaddress" id="emailaddress" class="form-control">
+                            </div> 
+                            <div class="form-group">
+                                <label for="email" class="text-info">Farm Name:</label><br>
+                                <input type="text" name="emailaddress" id="emailaddress" class="form-control">
+                            </div> 
+                            <div class="form-group">
+                                <label for="email" class="text-info">Phonenumber:</label><br>
+                                <input type="text" name="emailaddress" id="emailaddress" class="form-control">
+                            </div> 
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Confirm password:</label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loginCustomer" class="tabcontent">
+        <div class="container-fluid">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-8">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                        {% csrf_token %}
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
@@ -67,11 +143,10 @@ Include the above in your HEAD tag ---------->
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Cofirm password:</label><br>
+                                <label for="password" class="text-info">Confirm password:</label><br>
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
                         </form>
@@ -80,6 +155,25 @@ Include the above in your HEAD tag ---------->
             </div>
         </div>
     </div>
+
+    <script>
+        function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
 
 </html>
