@@ -15,3 +15,5 @@ farmer/farmer/__pycache__/__init__.cpython-37.pyc
 *.pyc
 *.pyc
 farmer/farmer_page/__pycache__/views.cpython-37.pyc
+farmer/db.sqlite3
+farmer/db.sqlite3
