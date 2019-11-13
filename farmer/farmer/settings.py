@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'User',
+    'customers',
     'home_page.apps.HomePageConfig',
     'farmer_page.apps.FarmerPageConfig',
     'user_profile.apps.UserProfileConfig',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'profile_page',
     'crispy_forms'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

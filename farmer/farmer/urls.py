@@ -11,6 +11,7 @@ urlpatterns = [
     path('farmer/', include('farmer_page.urls')),
     path('profile/', include('user_profile.urls')),
     path('login/', include('User.urls')),
+    path('customers/', include('customers.urls')),
     path('products/', include('user_profile.urls')),
     path('__debug__/', include(debug_toolbar.urls))
 ]
