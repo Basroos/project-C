@@ -56,7 +56,7 @@
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav ">
                         <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-                        
+
                         <p style="margin:2px; color:white;">{{user.username}}</p>
                         <li id="profile_nav"class="nav-item dropdown">
                         
@@ -84,6 +84,7 @@
                         
                     </ul>
                     {% else %}
+                        <h4 class="text-white">Guest</h4>
                         <a href="{% url 'login_url' %}">Login</a>
                         <a href="{% url 'register_url' %}">Register</a>
                     {% endif %}

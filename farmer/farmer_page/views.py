@@ -33,7 +33,7 @@ def search_farmer(request):
     query_farmer = request.GET.get("query")
     if query_farmer:
         # result = Farmer.objects.filter(Q(address__icontains=query_farmer) | Q(products__icontains=query_farmer))
-        result = Farmer.objects.filter(name__username__startswith=query_farmer)
+        result = Farmer.objects.filter(name__startswith=query_farmer)
         if len(result) < 1:
             empty = True
         else:
