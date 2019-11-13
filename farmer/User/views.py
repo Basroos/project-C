@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView, LogoutView
 from User.forms import SignUpForm
+from User.forms import SignUpForm2
 from django.contrib.auth.hashers import make_password
 from farmer_page.models import Farmer
 
@@ -46,6 +47,25 @@ def registerView(request):
         form = SignUpForm()
 
     return render(request, 'registration/register.html',{'form':form})
+
+def customerView(request):
+    if request.method == 'POST':
+        form = SignUpForm2(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_pass = form.cleaned_data.get('password1')
+            raw_pass = make_password(form.cleaned_data.get('password1'))
+            email = form.cleaned_data.get('email')
+            #user = user.set_password(password1)
+            #login(request, user)
+            return redirect('login_url')
+    else:
+        form = SignUpForm2()
+
+    return render(request, 'registration/reg.html',{'form':form})
+
+
 
 
 
