@@ -57,10 +57,8 @@ def customerView(request):
             raw_pass = form.cleaned_data.get('password1')
             raw_pass = make_password(form.cleaned_data.get('password1'))
             email = form.cleaned_data.get('email')
-            customer = Customer(name=username, address=address, email=email)
-            customer.save()
             #user = user.set_password(password1)
-           # login(request, user)
+            #login(request, user)
             return redirect('login_url')
     else:
         form = SignUpForm2()
