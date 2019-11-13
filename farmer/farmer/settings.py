@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_page',
-    'crispy_forms'
+    'crispy_forms',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'farmer.urls'
@@ -104,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -125,3 +130,4 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/farmer'
 LOGOUT_REDIRECT_URL = 'home_index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+INTERNAL_IPS = ('127.0.0.1',)
