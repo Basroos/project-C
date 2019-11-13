@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_page',
-    'crispy_forms',
-    'debug_toolbar',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -54,8 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 ]
 
 ROOT_URLCONF = 'farmer.urls'
@@ -130,4 +127,3 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/farmer'
 LOGOUT_REDIRECT_URL = 'home_index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-INTERNAL_IPS = ('127.0.0.1',)

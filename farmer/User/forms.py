@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+#custom user sign up fields for farmers
 class SignUpForm(UserCreationForm):
     #username = forms.CharField(max_length=40, help_text='Enter a username')
     email = forms.EmailField(max_length=40, help_text='Enter a valid email adress')
@@ -15,7 +16,7 @@ class SignUpForm(UserCreationForm):
     province = forms.CharField(
         max_length=50, help_text='enter your province')
     products = forms.CharField(
-        max_length=50, help_text='which products do you expect to sell')
+        max_length=50, help_text='which products are you expecting to sell')
 
     class Meta:
         model = User
