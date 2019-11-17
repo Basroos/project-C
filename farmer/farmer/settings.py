@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'User',
+    'Inbox',
     'home_page.apps.HomePageConfig',
     'farmer_page.apps.FarmerPageConfig',
     'user_profile.apps.UserProfileConfig',

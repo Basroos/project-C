@@ -38,7 +38,7 @@ def registerView(request):
             phone = form.cleaned_data.get('phone_number')
             products = form.cleaned_data.get('products')
             farmer = Farmer(name=username, address=address, age=age,
-            province=province, company_name=farm, phone_number=phone, products=products)
+            province=province, company_name=farm, phone_number=phone, products=products, email=email)
             farmer.save()
             #user = user.set_password(password1)
            # login(request, user)
