@@ -1,0 +1,68 @@
+{% extends 'home_page/base.html' %}
+{% load static %}
+<!--Main layout-->
+{%block content%}
+
+<main class="mt-5">
+
+    <!--Main container-->
+    <div class="container">
+
+      <!--Grid row-->
+      <div id="info" class="row justify-content-md-center">
+
+        <!--Grid column-->
+        <div id="profile_pic" class="col-md-4 mb-4">
+
+          <div class="view overlay z-depth-1-half">
+            <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="">
+            <div class="mask rgba-white-light"></div>
+          </div>
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+          <div id="general_info" class="card">
+            <div class="card-body" class="table-responsive-sm">
+              <h4 class="card-title">General info</h4>
+                <table class="table">
+                  <tbody>
+                      <tr>
+                        <th>First Name</th>
+                          <td>{{profile.name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Last Name</th>
+                          <td>Carter</td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                          <td>johncarter@mail.com</td>
+                      </tr>
+                      <tr>
+                        <th>Farm Name</th>
+                          <td>{{profile.company_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th>
+                          <td>{{profile.address}}</td>
+                      </tr>
+                      <tr>
+                        <th>Province</th>
+                          <td>{{profile.province}}</td>
+                      </tr>
+                      <tr>
+                        <th>Phonenumber</th>
+                          <td>{{profile.phone_number}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+</body>
+{%endblock content%}
