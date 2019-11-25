@@ -38,7 +38,7 @@ def post_product(request):
             print(user)
             product = Product(product_name=name, product_description=description, product_price=price, product_user=user)
             product.save()
-            return render(request, template_name, {'product': product})
+            return render(request, 'user_profile/product.html', {'product':Product.objects.all()})
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
