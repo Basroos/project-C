@@ -2,6 +2,7 @@
 {% load static %}
 <!--Main layout-->
 {%block content%}
+{% load crispy_forms_tags %}
 
 <main class="mt-5">
 
@@ -57,12 +58,15 @@
                         <th>Phonenumber</th>
                           <td>{{profile.phone_number}}</td>
                       </tr>
+                        <tr>
+                        <th>Products</th>
+                          <td>{{profile.products}}</td>
+                      </tr>
                   </tbody>
               </table>
+                <a href="{% url 'update-profile' %}"class="btn btn-primary">Update your profile</a></a>
             </div>
           </div>
         </div>
-
-
 </body>
 {%endblock content%}
