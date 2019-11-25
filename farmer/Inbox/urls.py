@@ -6,6 +6,8 @@ from django.contrib.auth import logout
 
 urlpatterns =[
     path('',views.indexView,name="home_page"),
+    path('inbox/', views.InboxView, name="inbox_url")
+]
     
 
    
