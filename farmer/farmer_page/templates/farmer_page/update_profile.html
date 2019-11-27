@@ -1,0 +1,72 @@
+{% extends 'home_page/base.html' %} {% block content %} {% load static %}
+<!-- {% load crispy_forms_tags %} -->
+<main class="mt-5">
+  <!--Main container-->
+  <div class="container">
+    <!--Grid row-->
+    <div id="info" class="row justify-content-md-center">
+      <!--Grid column-->
+      <div id="profile_pic" class="col-md-4 mb-4">
+        <div class="view overlay z-depth-1-half">
+          <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="" />
+          <div class="mask rgba-white-light"></div>
+        </div>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <div id="general_info" class="card">
+          <div class="card-body" class="table-responsive-sm">
+            <h4 class="card-title">General info</h4>
+            <form method="POST" action="">
+              {% csrf_token %}
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>First Name</th>
+                    <td>{{updateuser.name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Last Name</th>
+                    <td>{{updateuser.name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
+                    <td>johncarter@mail.com</td>
+                  </tr>
+                  <tr>
+                    <th>Farm Name</th>
+                    <td>{{updateuser.farm}}</td>
+                  </tr>
+                  <tr>
+                    <th>Age</th>`
+                    <td>25</td>
+                  </tr>
+                  <tr>
+                    <th>Address</th>
+                    <td>{{updateuser.address}}</td>
+                  </tr>
+                  <tr>
+                    <th>Province</th>
+                    <td>{{updateuser.province}}</td>
+                  </tr>
+                  <tr>
+                    <th>Phonenumber</th>
+                    <td>{{updateuser.phone_number}}</td>
+                  </tr>
+                  <tr>
+                    <th>Products</th>
+                    <td>{{updateuser.products}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-primary" type="submit">Submit your changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
