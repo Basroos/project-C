@@ -6,6 +6,7 @@ from profile_page.models import Farmer
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
+    search = {"name":["Mais","Perzik","Brocolli"]}
     context = {'product':Product.objects.all()}
     return render(request, template_name, context)
 
@@ -30,13 +31,15 @@ def post_product(request):
     template_name = 'user_profile/add_product.html'
     if request.method == 'POST':
         form = ProductForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             name = form.cleaned_data['product_name']
             description = form.cleaned_data['product_description']
             price = form.cleaned_data['product_price']
+            image = request.FILES['product_picture']
             user = request.user
             print(user)
-            product = Product(product_name=name, product_description=description, product_price=price, product_user=user)
+            product = Product(product_name=name, product_description=description, product_price=price, product_user=user, product_picture=image)
             product.save()
             return render(request, 'user_profile/product.html', {'product':Product.objects.all()})
         else:

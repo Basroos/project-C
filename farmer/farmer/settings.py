@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profile_page',
     'crispy_forms',
     'debug_toolbar',
+    'smartfields',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
+
 
 ROOT_URLCONF = 'farmer.urls'
 
@@ -132,3 +134,5 @@ LOGIN_REDIRECT_URL = '/farmer'
 LOGOUT_REDIRECT_URL = 'home_index'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 INTERNAL_IPS = ('127.0.0.1',)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
