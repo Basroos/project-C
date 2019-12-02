@@ -13,16 +13,21 @@
   </div>
 </div>
 
-{% if empty %}
+<!-- {% if empty %}
 <h1 class="text-center">No result matched</h1>
-{%endif%} {% if result %}
+{%endif%}  -->
+{% if result %}
 <div class="container">
   <div class="row">
     {% for x in result %}
     <div class="col-md-4 mt-2">
       <div class="card">
         <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% if x.product_picture %}
+            <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
+            {% else %}
+            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% endif %}
           <div class="card-body">
             <table class="table">
               <tbody>
@@ -50,7 +55,13 @@
 
   {%else%}
   <div class="container">
-    test
+    <div class="col-md-1 border border-grey">
+    <form action="{% url 'category' %}" method="GET">
+    {% for x in info %}
+     <input type="submit" value="{{x}}" name="category"/>
+    {% endfor %}
+    </form>
+    </div>
     <div class="row">
       {% for prod in product %}
       <div class="col-md-4 mt-2">
