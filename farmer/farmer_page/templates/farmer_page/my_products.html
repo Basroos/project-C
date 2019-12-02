@@ -1,7 +1,9 @@
-{% extends 'home_page/base.html'%} {% load static%} {% block content%}
+{% extends 'home_page/base.html'%}
+{% load static%}
+{% block content%}
 <h2 class="text-center">Welcome to your products page {{profile}}</h2>
 
-{% if product %}
+
 <div class="container">
   <div class="row">
     {% for prod in product %}
@@ -60,3 +62,6 @@
   </div>
   {%endif%} {% endblock content %}
 </div>
+
+
+{% endblock content %}
