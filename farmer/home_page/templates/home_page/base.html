@@ -21,6 +21,7 @@
     
     {% endblock %}
 </head>
+
 <body>
 	<div id="home">
 		<div class="landing-text">
@@ -86,8 +87,10 @@
                         </li>
                         
                     </ul>
-                    {% else %}
-                        <a href="{% url 'login_url' %}">Login/Register</a>
+                    {% else %}    
+					<div style="margin:5px;">
+					<a href="{% url 'login_url' %}" class="LinkButton">Login/Register</a>
+					</div>
                     {% endif %}
 
                 </div>
