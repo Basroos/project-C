@@ -1,16 +1,11 @@
 {% extends 'home_page/base.html' %} {%load static%} {%block styles%}
 <link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
-{%endblock styles%} 
-
-{%block search%}
+{%endblock styles%} {%block search%}
 <form id="searchForm" class="form-inline my-2 my-lg-0" method="GET" action="{% url 'product-search'%}">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search for product" name="query" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+  <input class="form-control mr-sm-2" type="search" placeholder="Search for product" name="query" aria-label="Search" />
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
 </form>
-{%endblock search%}
-
-
-{%block content%}
+{%endblock search%} {%block content%}
 
 <div class="container">
   <div class="display-4 mx-auto text-center">
@@ -18,18 +13,21 @@
   </div>
 </div>
 
-{% if empty %}
-  <h1 class="text-center">No result matched</h1>
-{%endif%}
-
+<!-- {% if empty %}
+<h1 class="text-center">No result matched</h1>
+{%endif%}  -->
 {% if result %}
-  <div class="container">
+<div class="container">
   <div class="row">
     {% for x in result %}
     <div class="col-md-4 mt-2">
       <div class="card">
         <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+            {% if x.product_picture %}
+            <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
+            {% else %}
+            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% endif %}
           <div class="card-body">
             <table class="table">
               <tbody>
@@ -53,70 +51,70 @@
       </div>
     </div>
     {%endfor%}
-</div>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-{%else%}
-<div class="container">
-  <div class="row">
-    {% for prod in product %}
-    <div class="col-md-4 mt-2">
-      <div class="card">
-        <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
-          <div class="card-body">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Product name</th>
-                  <td>{{prod.product_name}}</td>
-                </tr>
-                <tr>
-                  <th>Description</th>
-                  <td>{{prod.product_description}}</td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td>{{prod.product_price}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
-          </div>
-        </a>
-      </div>
+  {%else%}
+  <div class="container">
+    <div class="col-md-1 border border-grey">
+    <form action="{% url 'category' %}" method="GET">
+    {% for x in info %}
+     <input type="submit" value="{{x}}" name="category"/>
+    {% endfor %}
+    </form>
     </div>
-    {%endfor%}
-</div>
-
-<div class="container">
     <div class="row">
-      <div class="col-md-4 ml-auto mr-2">
+      {% for prod in product %}
+      <div class="col-md-4 mt-2">
         <div class="card">
-          <h5 class="card-header">
-            Add Product
-          </h5>
-          <div class="card-body">
-            <h5 class="card-title">
-              Do you want to advertise your products? Do it right now!
+          <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
+            {% if prod.product_picture %}
+            <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />
+            {% else %}
+            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% endif %}
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>Product name</th>
+                    <td>{{prod.product_name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Description</th>
+                    <td>{{prod.product_description}}</td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <td>{{prod.product_price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+            </div>
+          </a>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+    {%endif%} {% if user.is_authenticated %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 ml-auto mr-2">
+          <div class="card">
+            <h5 class="card-header">
+              Add Product
             </h5>
-            <p class="card-text">You can add maximum 5 products today</p>
-            <a href="{% url 'add-product' %}" class="btn btn-outline-primary">Add Product</a>
+            <div class="card-body">
+              <h5 class="card-title">
+                Do you want to advertise your products? Do it right now!
+              </h5>
+              <p class="card-text">You can add maximum 5 products today</p>
+              <a href="{% url 'add-product' %}" class="btn btn-outline-primary">Add Product</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  {%endif%} {%endblock content%}
 </div>
-{%endif%}
-{%endblock content%}

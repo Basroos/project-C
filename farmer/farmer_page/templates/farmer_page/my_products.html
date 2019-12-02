@@ -10,7 +10,11 @@
     <div class="col-md-4 mt-2">
       <div class="card">
         <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+            {% if prod.product_picture %}
+            <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />
+            {% else %}
+            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% endif %}
           <div class="card-body">
             <table class="table">
               <tbody>
@@ -28,12 +32,30 @@
                 </tr>
               </tbody>
             </table>
-            <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+            <p class="card-text">
+              <small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small>
+            </p>
+            <div class="">
+              <a class="btn btn-danger text-white mr-auto">Delete your product</a>
+            </div>
           </div>
         </a>
       </div>
     </div>
     {%endfor%}
+  </div>
+  {% else %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        You don't have any products, add products to see your own products!
+      </div>
+      <div class="col-md-4">
+        <a href="{% url 'add-product' %}"><button class="btn btn-outline-success">Add product</button></a>
+      </div>
+    </div>
+  </div>
+  {%endif%} {% endblock content %}
 </div>
 
 
