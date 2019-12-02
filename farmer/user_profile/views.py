@@ -2,12 +2,13 @@ from django.shortcuts import render
 from user_profile.forms import ProductForm
 from user_profile.models import Product
 from profile_page.models import Farmer
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
     search = {"name":["Mais","Peach","Brocolli"]}
-    context = {'product':Product.objects.all(), "info":search['name'], "empty":False}
+    context = {'product':Product.objects.all(), "info":search['name'],}
     return render(request, template_name, context)
 
 def category_products(request):
@@ -15,6 +16,10 @@ def category_products(request):
     category = request.GET.get("category")
     if category:
         result = Product.objects.filter(product_name__istartswith=category)
+
+    # if len(result) == 0:
+    #     available = f"There are no {category} products available"
+    # "available":available
         
     return render(request, 'user_profile/product.html', {"result": result, "info": search['name']})
 
@@ -35,8 +40,14 @@ def add_product(request):
     template_name = 'user_profile/add_product.html'
     return render(request, template_name, {'form': form})
 
-def delete_product(request):
-    pass
+def delete_product(request, id):
+    template_name = "farmer_page/my_products.html"
+    product = Product.objects.get(pk=id)
+    product.delete()
+    # product.delete(pk=id)
+    products = Product.objects.filter(product_user=request.user)
+
+    return render(request,template_name, {"product":products})
 
 def post_product(request):
     form = ProductForm()
