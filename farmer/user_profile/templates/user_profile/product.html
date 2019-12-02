@@ -58,10 +58,13 @@
     <div class="col-md-1 border border-grey">
     <form action="{% url 'category' %}" method="GET">
     {% for x in info %}
-     <input type="submit" value="{{x}}" name="category"/>
+     <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
     {% endfor %}
     </form>
     </div>
+    <!-- {% if available %}
+      <h5>{{available}}</h5>
+    {% endif %} -->
     <div class="row">
       {% for prod in product %}
       <div class="col-md-4 mt-2">
