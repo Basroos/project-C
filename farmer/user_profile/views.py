@@ -7,8 +7,9 @@ from django.shortcuts import get_object_or_404
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
-    search = {"name":["Mais","Peach","Brocolli"]}
-    context = {'product':Product.objects.all(), "info":search['name'],}
+    search = {"Vegetable":["Mais","Peach","Brocolli"],
+            "Fruit":["komkommer","biber"]}
+    context = {'product':Product.objects.all(), "data":search}
     return render(request, template_name, context)
 
 def category_products(request):

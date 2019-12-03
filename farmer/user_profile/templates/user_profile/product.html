@@ -57,9 +57,14 @@
   <div class="container">
     <div class="col-md-1 border border-grey">
     <form action="{% url 'category' %}" method="GET">
-    {% for x in info %}
-     <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+    {% for key, value in data.items %}
+      <h5 class="badge badge-success">{{key}}</h5>
+      {% for x in value %}
+          <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+      {% endfor %}
     {% endfor %}
+     <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+     
     </form>
     </div>
     <!-- {% if available %}
