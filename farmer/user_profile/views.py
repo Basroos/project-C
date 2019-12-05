@@ -2,6 +2,7 @@ from django.shortcuts import render
 from user_profile.forms import ProductForm
 from user_profile.models import Product
 from profile_page.models import Farmer
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def user_profile(request):
@@ -42,3 +43,10 @@ def post_product(request):
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
+
+def show_productmodal(request, id):
+    instance = get_object_or_404(Product, pk=id)
+    context={
+        'instance': instance
+    }
+    return render(request, 'user_profile/modal.html', context)

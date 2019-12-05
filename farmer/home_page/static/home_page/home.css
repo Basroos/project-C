@@ -32,7 +32,7 @@ body {
   padding: 0px !important;
 }
 .nav-link:hover {
-  color: white!important;  
+  color: white!important;
 }
 .navbar-collapse {
   justify-content: flex-end;

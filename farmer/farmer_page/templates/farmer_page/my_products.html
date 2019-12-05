@@ -4,64 +4,102 @@
     
 {% endblock %} 
 {% block content%}
+<br>
 <h2 class="text-center">Welcome to your products page {{profile}}</h2>
+<br>
 
-{% if product %}
 <div class="container">
   <div class="row">
-    {% for prod in product %}
-    <div class="col-md-4 mt-2">
-      <div class="card">
-        <a
-          href="#"
-          class="stretched-link"
-          style="color:black;text-decoration: none;"
-        >
-          <img
-            class="card-img-top"
-            src="{% static 'home_page/mais.jpg' %}"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Product name</th>
-                  <td>{{prod.product_name}}</td>
-                </tr>
-                <tr>
-                  <th>Description</th>
-                  <td>{{prod.product_description}}</td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td>{{prod.product_price}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text">
-              <small class="text-muted"
-                >Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small
+    {% if product %}
+    <div class="col-md-8 mt-2">
+      <div class="container">
+        <div class="row">
+          {% for prod in product %}
+          <div class="col-md-6 mt-2">
+            <div class="card">
+              <a
+                href="#"
+                class="stretched-link"
+                style="color:black;text-decoration: none;"
               >
-            </p>
+                <img
+                  class="card-img-top"
+                  src="{% static 'home_page/mais.jpg' %}"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>Product name</th>
+                        <td>{{prod.product_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Description</th>
+                        <td>{{prod.product_description}}</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td>{{prod.product_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="card-text">
+                    <small class="text-muted"
+                      >Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small
+                    >
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
-    {%endfor%}
-  </div>
-  {% else %}
-  <div class="container-fluid">
+    <div class="col-md-4 mt-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ml-auto mr-2">
+            <div class="card">
+              <h5 class="card-header">
+                Add Product
+              </h5>
+              <div class="card-body">
+                <h5 class="card-title">
+                  Do you want to advertise your products? Do it right now!
+                </h5>
+                <p class="card-text">You can add maximum 5 products today</p>
+                <a href="{% url 'add-product' %}" class="btn btn-outline-primary">Add Product</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%endfor%}
+</div>
+{% else %}
+  {% if user.is_authenticated %}
+  <div class="container">
     <div class="row">
-      <div class="col-md-5">
-        You don't have any products, add products to see your own products!
-      </div>
-      <div class="col-md-4">
-          <a href="{% url 'add-product' %}"><button class="btn btn-outline-success">Add product</button></a>
+      <div class="col-md-4 ml-auto mr-2">
+        <div class="card">
+          <h5 class="card-header">
+            Add Product
+          </h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              Do you want to advertise your products? Do it right now!
+            </h5>
+            <p class="card-text">You can add maximum 5 products today</p>
+            <a href="{% url 'add-product' %}" class="btn btn-outline-primary">Add Product</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  {%endif%} 
-  </div>
+  {% endif %}
+{% endif %}
+<br>
 </div>
 {% endblock content %}
