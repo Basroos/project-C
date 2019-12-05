@@ -58,7 +58,7 @@
     <div class="col-md-1 border border-grey">
     <form action="{% url 'category' %}" method="GET">
     {% for key, value in data.items %}
-      <h5 class="badge badge-success">{{key}}</h5>
+        <input type="submit" value="{{key}}" name="category" class="btn btn-secondary"></inpu>
       {% for x in value %}
           <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
       {% endfor %}

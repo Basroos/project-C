@@ -13,8 +13,15 @@ def user_profile(request):
     return render(request, template_name, context)
 
 def category_products(request):
-    search = {"name": ["Mais", "Peach", "Brocolli"]}
     category = request.GET.get("category")
+    if category == "Vegetable":
+        category = ["Mais","peach","Brocolli","Peach"]
+        result = Product.objects.filter(product_name__in=category)
+    
+    if category == "Fruit":
+        
+        pass
+
     if category:
         result = Product.objects.filter(product_name__istartswith=category)
 
@@ -22,7 +29,7 @@ def category_products(request):
     #     available = f"There are no {category} products available"
     # "available":available
         
-    return render(request, 'user_profile/product.html', {"result": result, "info": search['name']})
+    return render(request, 'user_profile/product.html', {"result": result})
 
 def search_product(request):
     template = 'user_profile/product.html'
