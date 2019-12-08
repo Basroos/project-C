@@ -55,13 +55,21 @@
 
   {%else%}
   <div class="container">
-    <div class="col-md-1 border border-grey">
+  {% if data %}
+    <div class="col-md-1">
     <form action="{% url 'category' %}" method="GET">
-    {% for x in info %}
-     <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+    {% for key, value in data.items %}
+        <input type="submit" value="{{key}}" name="category" class="btn btn-secondary mt-1"></inpu>
+      {% for x in value %}
+          <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+      {% endfor %}
     {% endfor %}
+     <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+     
     </form>
     </div>
+  {% endif %}
+
     <!-- {% if available %}
       <h5>{{available}}</h5>
     {% endif %} -->
