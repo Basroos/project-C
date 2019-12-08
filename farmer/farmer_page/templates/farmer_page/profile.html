@@ -17,6 +17,11 @@
 <body>
 
 <div id="home">
+  {% if messages %}
+  {% for message in messages %}
+  <h1 class="alert alert-success">{{message}}</h1>
+  {% endfor %}
+  {% endif %}
     <div class="landing-text">
       <h1>FarmerStore</h1>
       <h4>The place to buy your products straight of the farmer.</h4>
@@ -129,10 +134,35 @@
                         <th>Phonenumber</th>
                           <td>{{farmer.phone_number}}</td>
                       </tr>
+                      <tr>
+                       <td><button class="btn btn-danger" data-toggle="modal" data-target="#reportModal">Report farmer</button></td>
+                      </tr>
                   </tbody>
               </table>
             </div>
           </div>
+  <form action="" method="POST">
+    <div class="modal fade" id="reportModal" role="dialog">
+    <div class="modal-dialog">
+      {% csrf_token %}
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>{{form}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-danger" type="submit">Report</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </form>
+  
           {%endblock content%}
 
         </div>
