@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_page',
+    'bootstrap_modal_forms',
     'crispy_forms'
 ]
 
@@ -83,12 +84,8 @@ WSGI_APPLICATION = 'farmer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'projectc',
-        'USER': 'postgres',
-        'PASSWORD': '179e4197',
-        'HOST': 'localhost',
-        'PORT': '8080',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

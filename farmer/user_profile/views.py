@@ -43,10 +43,3 @@ def post_product(request):
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
-
-def show_productmodal(request, id):
-    instance = get_object_or_404(Product, pk=id)
-    context={
-        'instance': instance
-    }
-    return render(request, 'user_profile/modal.html', context)
