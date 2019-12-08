@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Farmer
+from user_profile.models import Product
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, get_list_or_404, redirect
 from farmer_page.models import Farmer
@@ -10,13 +11,15 @@ from farmer_page.forms import UpdateUser
 
 def farmer_index(request):
     context = {'info': Farmer.objects.all(),
-                'navigation':'farmer',}
+                'navigation':'farmer'}
     return render(request, 'farmer_page/farmer.html', context)
 
 
 def profile(request, id):
     farmer = get_object_or_404(Farmer, pk=id)
-    context = {'farmer':farmer}
+    context = {'farmer':farmer,
+                'prods':Product.objects.all()   
+    }
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):
