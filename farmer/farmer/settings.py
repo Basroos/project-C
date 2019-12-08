@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_page',
-    'bootstrap_modal_forms',
     'crispy_forms'
 ]
 
