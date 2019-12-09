@@ -1,7 +1,6 @@
 {% extends 'home_page/base.html' %} {%load static%} {%block styles%}
 <link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
 <link rel="stylesheet" href="{% static 'user_profile/form.css'%}" >
-Copy
 {%endblock styles%} 
 
 {%block search%}
@@ -25,7 +24,7 @@ Copy
 {%endif%}
 
 {% if result %}
-  <div class="container">
+<div class="container">
   <div class="row">
     {% for x in result %}
     <div class="col-md-4 mt-2">
@@ -55,6 +54,7 @@ Copy
       </div>
     </div>
     {%endfor%}
+  </div>  
 </div>
 
 {%else%}
@@ -63,20 +63,20 @@ Copy
     {% for prod in product %}
     <div class="col-md-4 mt-2">
       <div class="card">
-        <a class="stretched-link open-modal" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal">
+        <a class="stretched-link open-modal" id="myBtn{{prod.id}}" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal{{ prod.id }}">
           <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
           <div class="card-body">
             <table class="table">
               <tbody>
-                <tr>
+                <tr class="prodName">
                   <th>Product name</th>
                   <td>{{prod.product_name}}</td>
                 </tr>
-                <tr>
+                <tr class="prodDesc">
                   <th>Description</th>
                   <td>{{prod.product_description}}</td>
                 </tr>
-                <tr>
+                <tr class="prodPrice">
                   <th>Price</th>
                   <td>{{prod.product_price}}</td>
                 </tr>
@@ -87,82 +87,133 @@ Copy
         </a>
       </div>
     </div>
-    {%endfor%}
-</div>
-<br>
-{%endif%}
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Header</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <form action="/action_page.php">
-          Quantity:
-          <input type="number" name="quantity" min="{prod.quantity}" max="{prod.quantity}">
-          <input type="submit" value="Add to cart">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <div class="imagebg"></div>
-        <div class="row " style="margin-top: 50px">
-          <div class="col-md-6 col-md-offset-3 form-container">
-            <h2>Reviews</h2>
-              <p>
-                Please provide your review below:
-              </p>
-                <div class="row">
-                  <div class="col-sm-12 form-group">
-                    <label for="comments">
-                      Reviews:</label>
-                      <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Your reviews" maxlength="6000" rows="7"></textarea>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6 form-group">
-                    <label for="name">
-                        Your Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="col-sm-6 form-group">
-                    <label for="email">
-                        Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
+    <div class="modal fade" id="myModal{{ prod.id }}" role="dialog">
+    <div class="modal-dialog">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{prod.product_name}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body ratingform"> 
+          <div class="card">
+            <a class="stretched-link open-modal" style="color:black;text-decoration: none;">
+              <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr class="prodName">
+                      <th>Product name</th>
+                      <td>{{prod.product_name}}</td>
+                    </tr>
+                    <tr class="prodDesc">
+                      <th>Description</th>
+                      <td>{{prod.product_description}}</td>
+                    </tr>
+                    <tr class="prodPrice">
+                      <th>Price</th>
+                      <td>{{prod.product_price}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
               </div>
+            </a>
+          </div>
+        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+          <p>Here you can add the product to your cart</p>
+          <form action="">
+            Quantity:
+            <input type="number" name="quantity" min="0" max="{prod.quantity}">
+            <input type="submit" value="Add to cart">
+          </form>
+        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+          <span class="heading">User Rating</span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <p>4.1 average based on 254 reviews.</p>
+          <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
 
-              <div class="row">
-                <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-lg btn-warning btn-block" >Post </button>
-                </div>
-              </div>
-
-            </form>
-            <div id="success_message" style="width:100%; height:100%; display:none; ">
-                <h3>Posted your feedback successfully!</h3>
+          <div class="row">
+            <div class="side">
+              <div>5 star</div>
             </div>
-            <div id="error_message" style="width:100%; height:100%; display:none; ">
-              <h3>Error</h3>
-              Sorry there was an error sending your form.
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-5"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>150</div>
+            </div>
+            <div class="side">
+              <div>4 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-4"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>63</div>
+            </div>
+            <div class="side">
+              <div>3 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-3"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>15</div>
+            </div>
+            <div class="side">
+              <div>2 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-2"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>6</div>
+            </div>
+            <div class="side">
+              <div>1 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-1"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>20</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="modal-footer">
+          <button  value="" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
       </div>
     </div>
+    {%endfor%}
   </div>
 </div>
-<script type="text/javascript">
-    $('.open-modal').click(function (e) {
-        $('#myModal .modal-body').html($(this).clone());
+<br>
+{%endif%}
+
+<script>
+  var a = "{{ prod.id }}"
+  $(document).ready(function(){
+    $("#myBtn"+a).click(function(){
+      $("#myModal"+a).modal({show:true});
     });
+  });
 </script>
 <script>
 $(function()
