@@ -84,4 +84,4 @@ def post_product(request):
             return render(request, 'user_profile/product.html', {'product': Product.objects.all()})
         else:
             form = ProductForm()
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'form':form})

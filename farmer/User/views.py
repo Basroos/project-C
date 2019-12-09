@@ -64,8 +64,3 @@ def customerView(request):
         form = SignUpForm2()
 
     return render(request, 'registration/reg.html',{'form':form})
-
-
-
-
-

@@ -1,6 +1,9 @@
 {% extends 'home_page/base.html' %} {%load static%} {%block styles%}
 <link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
-{%endblock styles%} {%block search%}
+<link rel="stylesheet" href="{% static 'user_profile/form.css'%}" >
+{%endblock styles%} 
+
+{%block search%}
 <form id="searchForm" class="form-inline my-2 my-lg-0" method="GET" action="{% url 'product-search'%}">
   <input class="form-control mr-sm-2" type="search" placeholder="Search for product" name="query" aria-label="Search" />
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
@@ -51,81 +54,230 @@
       </div>
     </div>
     {%endfor%}
-  </div>
+  </div>  
+</div>
 
-  {%else%}
-  <div class="container">
-  {% if data %}
-    <div class="col-md-1">
-    <form action="{% url 'category' %}" method="GET">
-    {% for key, value in data.items %}
-        <input type="submit" value="{{key}}" name="category" class="btn btn-secondary mt-1"></inpu>
-      {% for x in value %}
-          <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
-      {% endfor %}
-    {% endfor %}
-     <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
-     
-    </form>
-    </div>
-  {% endif %}
-
-    <!-- {% if available %}
-      <h5>{{available}}</h5>
-    {% endif %} -->
-    <div class="row">
-      {% for prod in product %}
-      <div class="col-md-4 mt-2">
-        <div class="card">
-          <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-            {% if prod.product_picture %}
-            <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />
-            {% else %}
-            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
-            {% endif %}
-            <div class="card-body">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <th>Product name</th>
-                    <td>{{prod.product_name}}</td>
-                  </tr>
-                  <tr>
-                    <th>Description</th>
-                    <td>{{prod.product_description}}</td>
-                  </tr>
-                  <tr>
-                    <th>Price</th>
-                    <td>{{prod.product_price}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
-            </div>
-          </a>
-        </div>
+{%else%}
+<div class="container">
+  <div class="row">
+    {% for prod in product %}
+    <div class="col-md-4 mt-2">
+      <div class="card">
+        <a class="stretched-link open-modal" id="myBtn{{prod.id}}" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal{{ prod.id }}">
+          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr class="prodName">
+                  <th>Product name</th>
+                  <td>{{prod.product_name}}</td>
+                </tr>
+                <tr class="prodDesc">
+                  <th>Description</th>
+                  <td>{{prod.product_description}}</td>
+                </tr>
+                <tr class="prodPrice">
+                  <th>Price</th>
+                  <td>{{prod.product_price}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+          </div>
+        </a>
       </div>
-      {%endfor%}
     </div>
-    {%endif%} {% if user.is_authenticated %}
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 ml-auto mr-2">
+    <div class="modal fade" id="myModal{{ prod.id }}" role="dialog">
+    <div class="modal-dialog">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{prod.product_name}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body ratingform"> 
           <div class="card">
-            <h5 class="card-header">
-              Add Product
-            </h5>
-            <div class="card-body">
-              <h5 class="card-title">
-                Do you want to advertise your products? Do it right now!
-              </h5>
-              <p class="card-text">You can add maximum 5 products today</p>
-              <a href="{% url 'add-product' %}" class="btn btn-outline-primary">Add Product</a>
+            <a class="stretched-link open-modal" style="color:black;text-decoration: none;">
+              <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr class="prodName">
+                      <th>Product name</th>
+                      <td>{{prod.product_name}}</td>
+                    </tr>
+                    <tr class="prodDesc">
+                      <th>Description</th>
+                      <td>{{prod.product_description}}</td>
+                    </tr>
+                    <tr class="prodPrice">
+                      <th>Price</th>
+                      <td>{{prod.product_price}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+              </div>
+            </a>
+          </div>
+        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+          <p>Here you can add the product to your cart</p>
+          <form action="">
+            Quantity:
+            <input type="number" name="quantity" min="0" max="{prod.quantity}">
+            <input type="submit" value="Add to cart">
+          </form>
+        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+          <span class="heading">User Rating</span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <p>4.1 average based on 254 reviews.</p>
+          <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+
+          <div class="row">
+            <div class="side">
+              <div>5 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-5"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>150</div>
+            </div>
+            <div class="side">
+              <div>4 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-4"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>63</div>
+            </div>
+            <div class="side">
+              <div>3 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-3"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>15</div>
+            </div>
+            <div class="side">
+              <div>2 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-2"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>6</div>
+            </div>
+            <div class="side">
+              <div>1 star</div>
+            </div>
+            <div class="middle">
+              <div class="bar-container">
+                <div class="bar-1"></div>
+              </div>
+            </div>
+            <div class="side right">
+              <div>20</div>
             </div>
           </div>
         </div>
+        <div class="modal-footer">
+          <button  value="" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
       </div>
     </div>
+    {%endfor%}
   </div>
   {%endif%} {%endblock content%}
 </div>
+<br>
+{%endif%}
+
+<script>
+  var a = "{{ prod.id }}"
+  $(document).ready(function(){
+    $("#myBtn"+a).click(function(){
+      $("#myModal"+a).modal({show:true});
+    });
+  });
+</script>
+<script>
+$(function()
+{
+    function after_form_submitted(data)
+    {
+        if(data.result == 'success')
+        {
+            $('form#reused_form').hide();
+            $('#success_message').show();
+            $('#error_message').hide();
+        }
+        else
+        {
+            $('#error_message').append('<ul></ul>');
+
+            jQuery.each(data.errors,function(key,val)
+            {
+                $('#error_message ul').append('<li>'+key+':'+val+'</li>');
+            });
+            $('#success_message').hide();
+            $('#error_message').show();
+
+            //reverse the response on the button
+            $('button[type="button"]', $form).each(function()
+            {
+                $btn = $(this);
+                label = $btn.prop('orig_label');
+                if(label)
+                {
+                    $btn.prop('type','submit' );
+                    $btn.text(label);
+                    $btn.prop('orig_label','');
+                }
+            });
+
+        }//else
+    }
+
+	$('#reused_form').submit(function(e)
+      {
+        e.preventDefault();
+
+        $form = $(this);
+        //show some response on the button
+        $('button[type="submit"]', $form).each(function()
+        {
+            $btn = $(this);
+            $btn.prop('type','button' );
+            $btn.prop('orig_label',$btn.text());
+            $btn.text('Sending ...');
+        });
+
+
+                    $.ajax({
+                type: "POST",
+                url: 'handler.php',
+                data: $form.serialize(),
+                success: after_form_submitted,
+                dataType: 'json'
+            });
+
+      });
+});
+</script>
+{%endblock content%}
