@@ -9,7 +9,7 @@ class Farmer(models.Model):
     # naam, adres, leeftijd, provincie, email, bedrijfsnaam, telefoonnummer, producten
     name = models.CharField(max_length=60)
     address = models.CharField(max_length=50)
-    #email = models.EmailField(max_length=30)
+    email = models.EmailField(max_length=30, default="fbaba@gmail.com")
     age = models.CharField(max_length=2)
     province = models.CharField(max_length=100)
     company_name = models.CharField(max_length=30)

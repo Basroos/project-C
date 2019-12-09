@@ -68,6 +68,9 @@ Include the above in your HEAD tag ---------->
                             </div>
                             <div id="register-link" class="text-right">
                                 <a href="{% url 'customer_url' %}" class="text-info">Register here</a>
+                                <script>
+                                    alert('{{ message }}');
+                                </script>
                             </div>
                         </form>
                     </div>
