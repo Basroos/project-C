@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profile_page',
-    'crispy_forms'
+    'crispy_forms',
+    'debug_toolbar',
+    'smartfields',
+    'django_send_email',
 ]
 
 
@@ -133,3 +136,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 INTERNAL_IPS = ('127.0.0.1',)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ALLOWED_HOSTS = []
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
