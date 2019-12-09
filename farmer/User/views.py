@@ -28,6 +28,7 @@ def registerView(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            fullname= form.cleaned_data.get('fullname')
             raw_pass = form.cleaned_data.get('password1')
             raw_pass = make_password(form.cleaned_data.get('password1'))
             email = form.cleaned_data.get('email')
@@ -37,7 +38,7 @@ def registerView(request):
             province = form.cleaned_data.get('province')
             phone = form.cleaned_data.get('phone_number')
             products = form.cleaned_data.get('products')
-            farmer = Farmer(name=username, address=address, age=age,
+            farmer = Farmer(name=username, fullname=fullname, address=address, age=age,
             province=province, company_name=farm, phone_number=phone, products=products, email=email)
             farmer.save()
             #user = user.set_password(password1)
