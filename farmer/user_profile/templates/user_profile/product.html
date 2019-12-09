@@ -8,7 +8,8 @@
   <input class="form-control mr-sm-2" type="search" placeholder="Search for product" name="query" aria-label="Search" />
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
 </form>
-{%endblock search%} {%block content%}
+{%endblock search%} 
+{%block content%}
 
 <div class="container">
   <div class="display-4 mx-auto text-center">
@@ -16,9 +17,9 @@
   </div>
 </div>
 
-<!-- {% if empty %}
+{% if empty %}
 <h1 class="text-center">No result matched</h1>
-{%endif%}  -->
+{% endif %}
 {% if result %}
 <div class="container">
   <div class="row">
@@ -203,10 +204,7 @@
     </div>
     {%endfor%}
   </div>
-  {%endif%} {%endblock content%}
-</div>
-<br>
-{%endif%}
+  {%endif%} 
 
 <script>
   var a = "{{ prod.id }}"
