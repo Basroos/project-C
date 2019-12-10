@@ -1,6 +1,7 @@
 {% extends 'home_page/base.html' %} {%load static%} {%block styles%}
 <link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
 <link rel="stylesheet" href="{% static 'user_profile/form.css'%}" >
+<link rel="stylesheet" href="{% static 'user_profile/category.css'%}" >
 {%endblock styles%} 
 
 {%block search%}
@@ -22,6 +23,20 @@
 {% if result %}
 <div class="container">
   <div class="row">
+    {% if data %}
+      <div class="col-md-4">
+      <form action="{% url 'category' %}" method="GET">
+      {% for key, value in data.items %}
+          <input type="submit" value="{{key}}" name="category" class="btn btn-secondary mt-1"></input>
+        {% for x in value %}
+            <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+        {% endfor %}
+      {% endfor %}
+        <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+        
+      </form>
+      </div>
+    {% endif %}
     {% for x in result %}
     <div class="col-md-4 mt-2">
       <div class="card">
@@ -56,10 +71,29 @@
     {%endfor%}
   </div>  
 </div>
-
-{%else%}
-<div class="container">
+{% else %}
+  <div class="container">
   <div class="row">
+    {% if data %}
+      <div class="col-md-2 sidenav">
+      <form action="{% url 'category' %}" method="GET">
+        {% for key, value in data.items %}
+        <a class="dropdown-btn">
+          <button class="cat-name" type="submit" value="{{key}}" name="category">
+            {{key}}
+          </button>
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdown-container">
+          {% for x in value %}
+            <button type="submit" value="{{x}}" name="category" class="btn btn-primary btn-block" style="background-color:#262626;border:none;">{{x}}</button>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+      </form>
+      </div>
+    {% endif %}
     {% for prod in product %}
     <div class="col-md-4 mt-2">
       <div class="card">
@@ -203,10 +237,7 @@
     </div>
     {%endfor%}
   </div>
-  {%endif%} {%endblock content%}
-</div>
-<br>
-{%endif%}
+  {%endif%} 
 
 <script>
   var a = "{{ prod.id }}"
@@ -279,5 +310,21 @@ $(function()
 
       });
 });
+</script>
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
 </script>
 {%endblock content%}
