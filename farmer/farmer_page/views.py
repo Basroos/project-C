@@ -27,12 +27,12 @@ def profile(request, id):
         if form.is_valid():
             from_email = form.cleaned_data['from_email']
             subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            message = Mail(from_email=from_email, to_emails='Ahmet_karatas@live.nl', subject=subject, html_content=message)
+            message1 = str(farmer) + "\n" + form.cleaned_data['message']
+            message = Mail(from_email=from_email, to_emails='Ahmet_karatas@live.nl', subject=subject, html_content=message1)
             # send_mail(subject, message, from_email, [
             #           'Ahmet_karatas@live.nl'], fail_silently=False)
             sg = SendGridAPIClient(
-                api_key='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')
+                api_key='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')
             response = sg.send(message)
             print(response.status_code)
             messages.success(request, 'REPORTED!')
