@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class SignUpForm(UserCreationForm):
     #username = forms.CharField(max_length=40, help_text='Enter a username')
     email = forms.EmailField(max_length=40, help_text='Enter a valid email adress')
-    name = forms.CharField(max_length=60, required=False, help_text='Enter your full name')
+    name = forms.CharField(max_length=60, required=False, help_text='Enter your first name')
     farm = forms.CharField(max_length=30, required=False, help_text='Enter the name of your farm/company')
     phone_number = forms.CharField(max_length=10,help_text='Enter a valid phone number')
     address = forms.CharField(

@@ -21,3 +21,7 @@ class UpdateUser(forms.ModelForm):
         # email
         fields = ('name', 'age', 'farm', 'address', 'province', 'phone_number', 'products')
 
+class ReportForm(forms.Form):
+    from_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)

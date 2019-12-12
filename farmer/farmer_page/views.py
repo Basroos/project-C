@@ -1,3 +1,5 @@
+import os
+from django.core.mail import send_mail
 from django.shortcuts import render
 from .models import Farmer
 from user_profile.models import Product
@@ -6,7 +8,10 @@ from django.shortcuts import get_object_or_404, get_list_or_404, redirect
 from farmer_page.models import Farmer
 from django.db.models import Q
 from user_profile.models import Product
-from farmer_page.forms import UpdateUser
+from farmer_page.forms import UpdateUser, ReportForm
+from django.contrib import messages
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 # Create your views here.
 
 def farmer_index(request):
@@ -14,12 +19,29 @@ def farmer_index(request):
                 'navigation':'farmer'}
     return render(request, 'farmer_page/farmer.html', context)
 
-
 def profile(request, id):
+    # Report form and take id
+    # Go to the farmer
     farmer = get_object_or_404(Farmer, pk=id)
     context = {'farmer':farmer,
                 'prods':Product.objects.all()   
     }
+    if request.method == "POST":
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            from_email = form.cleaned_data['from_email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            message = Mail(from_email=from_email, to_emails='Ahmet_karatas@live.nl', subject=subject, html_content=message)
+            # send_mail(subject, message, from_email, [
+            #           'Ahmet_karatas@live.nl'], fail_silently=False)
+            sg = SendGridAPIClient(
+                api_key='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')
+            response = sg.send(message)
+            print(response.status_code)
+            messages.success(request, 'REPORTED!')
+    form = ReportForm()
+    context = {'farmer':farmer, "form":form}
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):
