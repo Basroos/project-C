@@ -61,159 +61,6 @@ Copy
 <div class="container">
   <div class="row">
     {% for prod in product %}
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-12 mb-4">
-  
-            <!--Card-->
-            <div id="product" class="card">
-  
-              <!--Card image-->
-              <div class="view overlay">
-                <img id="product_img" src="{% static 'home_page/mais.jpg' %}" class="card-img-top"
-                  alt="">
-                <a href="#">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-  
-              <!--Card content-->
-              <div class="card-body">
-                <table class="table">
-                  <tbody>
-                      <tr>
-                          <!-- Trigger/Open The Modal -->
-                          <a id="clicktext" class="openmodal">{{prod.productname}}</a>
-  
-                      </tr>
-                      <tr>
-                        <th>Description</th>
-                          <td>{{prod.description}}</td>
-                      </tr>
-                      <tr>
-                        <th>Harvest date</th>
-                          <td>{{prod.harvest_date|date:"F d, Y"}}</td>
-                      </tr>
-                      <tr>
-                        <th>Upload date</th>
-                          <td>{{prod.date_posted|date:"F d, Y"}}</td>
-                      </tr>
-                      <tr>
-                        <th>Stock</th>
-                          <td>{{ prod.stock }}</td>
-                      </tr>
-                      <tr>
-                        <th>Price</th>
-                          <td>{{ prod.price }}</td>
-                      </tr> 
-                  </tbody>
-                </table>
-              </div>
-  
-            </div>
-            <!--/.Card-->
-          </div>
-          <!--Grid column-->
-            <div id="myModal" class="modal">
-
-              <div class="modal-content">
-                            <span class="close">&times;</span>
-
-                              <div class = "productouter">
-                              <img src="{% static 'farmer_page/images/Product_image.png'%}" align= "left" style= width:7% heigth:7%; >
-                              <h1>{{prod.productname}}</h1>
-                              <br>
-                              <br>
-                              <br>
-                              <br>
-       
-                                      <div class = "box1">
-                                                  <a id="clicktext" class="openmodal">{{prod.productname}}</a>
-                                      </div>
-                              <br>
-                              <br>
-                              <br>
-                              <br>
-                              </div>
-                              <div class="thefarmer">
-                                                                <table class="table">
-                                          <tbody>
-                                              <tr>
-                                                  <!-- Trigger/Open The Modal -->
-
-                          
-                                              </tr>
-                                              <tr>
-                                                <th>Description</th>
-                                                  <td>{{prod.description}}</td>
-                                              </tr>
-                                              <tr>
-                                                <th>Harvest date</th>
-                                                  <td>{{prod.harvest_date|date:"F d, Y"}}</td>
-                                              </tr>
-                                              <tr>
-                                                <th>Upload date</th>
-                                                  <td>{{prod.date_posted|date:"F d, Y"}}</td>
-                                              </tr>
-                                              <tr>
-                                                <th>Stock</th>
-                                                  <td>{{ prod.stock }}</td>
-                                              </tr>
-                                              <tr>
-                                                <th>Price</th>
-                                                  <td>{{ prod.price }}</td>
-                                              </tr> 
-                                          </tbody>
-                                        </table>
-                                        <br>
-                                        <br>
-                                  <table class="table">
-                                    <tbody>
-                                        <tr>
-                                          <th>First Name</th>
-                                            <td>{{farmer.name}}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Last Name</th>
-                                            <td>Carter</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Email</th>
-                                            <td>johncarter@mail.com</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Farm Name</th>
-                                            <td>{{farmer.company_name}}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Address</th>
-                                            <td>{{farmer.address}}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Province</th>
-                                            <td>{{farmer.province}}</td>
-                                        </tr>
-                                        <tr>
-                                          <th>Phonenumber</th>
-                                            <td>{{farmer.phone_number}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                              </div>
-                              <div class="reviews">
-                              <p>reviews</p> <!--add review database!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-                          
-                              </div>
-                              <div class="suggestions">
-                              <p>suggestions</p>
-
-                              </div>
-                          </div>
-                        </div>
-
-
-
-
-
     <div class="col-md-4 mt-2">
       <div class="card">
         <a class="stretched-link open-modal" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal">
@@ -222,29 +69,8 @@ Copy
             <table class="table">
               <tbody>
                 <tr>
-                  <a id="clicktext" class="openmodal">{{prod.product_name}}</a>
                   <th>Product name</th>
                   <td>{{prod.product_name}}</td>
-                  <!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modal Header</h4>
-                          </div>
-                          <div class="modal-body">
-                            <p>Some text in the modal.</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
                 </tr>
                 <tr>
                   <th>Description</th>
@@ -276,9 +102,9 @@ Copy
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <form action="/action_page.php">
+        <form method='GET' action='{% url "add-to-cart" Product.id 0%}'>
           Quantity:
-          <input type="number" name="quantity" min="{prod.quantity}" max="{prod.quantity}">
+          <input type="number" name="qty" min="0" value='1'>
           <input type="submit" value="Add to cart">
         </form>
       </div>
@@ -352,14 +178,12 @@ $(function()
         else
         {
             $('#error_message').append('<ul></ul>');
-
             jQuery.each(data.errors,function(key,val)
             {
                 $('#error_message ul').append('<li>'+key+':'+val+'</li>');
             });
             $('#success_message').hide();
             $('#error_message').show();
-
             //reverse the response on the button
             $('button[type="button"]', $form).each(function()
             {
@@ -372,14 +196,11 @@ $(function()
                     $btn.prop('orig_label','');
                 }
             });
-
         }//else
     }
-
 	$('#reused_form').submit(function(e)
       {
         e.preventDefault();
-
         $form = $(this);
         //show some response on the button
         $('button[type="submit"]', $form).each(function()
@@ -389,8 +210,6 @@ $(function()
             $btn.prop('orig_label',$btn.text());
             $btn.text('Sending ...');
         });
-
-
                     $.ajax({
                 type: "POST",
                 url: 'handler.php',
@@ -398,43 +217,7 @@ $(function()
                 success: after_form_submitted,
                 dataType: 'json'
             });
-
       });
 });
 </script>
 {%endblock content%}
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("clicktext");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-var openmodal = document.getElementsByClassName("openmodal"); 
-
-var showModal = function() { 
-    modal.style.display = "block"; 
-}; 
-
-for (var i = 0; i < openmodal.length; i++) { 
-    openmodal[i].addEventListener('click', showModal, false); 
-} 
-</script>

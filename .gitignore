@@ -18,3 +18,5 @@ farmer/farmer_page/__pycache__/views.cpython-37.pyc
 farmer/db.sqlite3
 farmer/db.sqlite3
 *.sqlite3
+farmer/db.sqlite3
+farmer/db.sqlite3

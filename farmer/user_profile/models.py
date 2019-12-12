@@ -18,11 +18,13 @@ class Product(models.Model):
 
     
     def get_add_to_cart_url(self):
-            return reverse("product_cart:add-to-cart", kwargs={
-            "id": self.id
+        print('1')
+        return reverse("product_cart:add-to-cart", kwargs={
+        "id": self.id
         })
 
     def get_remove_from_cart_url(self):
-            return reverse("product_cart:remove-from-cart", kwargs={
-            "id": self.id
+        print('1')
+        return reverse("product_cart:remove-from-cart", kwargs={
+        "id": self.id
         })
