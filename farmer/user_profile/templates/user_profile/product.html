@@ -11,235 +11,282 @@
 </form>
 {%endblock search%} 
 {%block content%}
-
-<div class="container">
+<div class="container-fluid" style="background-color:white !important; border:1px solid black; width:80%; border-radius:10px;">
+<div class="container" style="padding:1%;">
   <div class="display-4 mx-auto text-center">
     Products
+    <hr style="2px solid grey;">
   </div>
 </div>
 
 {% if empty %}
+<br>
 <h1 class="text-center">No result matched</h1>
+<br>
 {% endif %}
 {% if result %}
 <div class="container">
   <div class="row">
-    {% if data %}
-      <div class="col-md-4">
-      <form action="{% url 'category' %}" method="GET">
-      {% for key, value in data.items %}
-          <input type="submit" value="{{key}}" name="category" class="btn btn-secondary mt-1"></input>
-        {% for x in value %}
-            <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
-        {% endfor %}
-      {% endfor %}
-        <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
-        
-      </form>
-      </div>
-    {% endif %}
-    {% for x in result %}
-    <div class="col-md-4 mt-2">
-      <div class="card">
-        <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
-            {% if x.product_picture %}
-            <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
-            {% else %}
-            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
-            {% endif %}
-          <div class="card-body">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Product name</th>
-                  <td>{{x.product_name}}</td>
-                </tr>
-                <tr>
-                  <th>Description</th>
-                  <td>{{x.product_description}}</td>
-                </tr>
-                <tr>
-                  <th>Price</th>
-                  <td>{{x.product_price}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{x.product_user}}, 1 minutes ago</small></p>
-          </div>
-        </a>
+    <div class="col-md-4">
+      <div class="container">
+        <div class="row">
+          {% if data %}
+            <div class="col-md-12">
+            <form action="{% url 'category' %}" method="GET">
+            {% for key, value in data.items %}
+                <input type="submit" value="{{key}}" name="category" class="btn btn-secondary mt-1"></input>
+              {% for x in value %}
+                  <input type="submit" value="{{x}}" name="category" class="btn btn-primary mt-1"/>
+              {% endfor %}
+            {% endfor %}
+              <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+              
+            </form>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
-    {%endfor%}
+    <div class="col-md-8">
+      <div class="container">
+        <div class="row">  
+          {% for x in result %}
+          <div class="col-md-6 mt-2">
+            <div class="card">
+              <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
+                  {% if x.product_picture %}
+                  <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
+                  {% else %}
+                  <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+                  {% endif %}
+                <div class="card-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>Product name</th>
+                        <td id="prodname" style="width: 30%">{{x.product_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Description</th>
+                        <td style="width: 30%">{{x.product_description}}</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td style="width: 30%">{{x.product_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{x.product_user}}, 1 minutes ago</small></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>      
   </div>  
 </div>
 {% else %}
-  <div class="container">
+<div class="container-fluid" style="margin-bottom: 2%;">
   <div class="row">
-    {% if data %}
-      <div class="col-md-2 sidenav">
-      <form action="{% url 'category' %}" method="GET">
-        {% for key, value in data.items %}
-        <a class="dropdown-btn">
-          <button class="cat-name" type="submit" value="{{key}}" name="category">
-            {{key}}
-          </button>
-          <i class="fa fa-caret-down"></i>
-        </a>
-        <div class="dropdown-container">
-          {% for x in value %}
-            <button type="submit" value="{{x}}" name="category" class="btn btn-primary btn-block" style="background-color:#262626;border:none;">{{x}}</button>
-          {% endfor %}
-        </div>
-        {% endfor %}
-        <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
-      </form>
-      </div>
-    {% endif %}
-    {% for prod in product %}
-    <div class="col-md-4 mt-2">
-      <div class="card">
-        <a class="stretched-link open-modal" id="myBtn{{prod.id}}" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal{{ prod.id }}">
-          <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
-          <div class="card-body">
-            <table class="table">
-              <tbody>
-                <tr class="prodName">
-                  <th>Product name</th>
-                  <td>{{prod.product_name}}</td>
-                </tr>
-                <tr class="prodDesc">
-                  <th>Description</th>
-                  <td>{{prod.product_description}}</td>
-                </tr>
-                <tr class="prodPrice">
-                  <th>Price</th>
-                  <td>{{prod.product_price}}</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="modal fade" id="myModal{{ prod.id }}" role="dialog">
-    <div class="modal-dialog">
-      {% csrf_token %}
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">{{prod.product_name}}</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body ratingform"> 
-          <div class="card">
-            <a class="stretched-link open-modal" style="color:black;text-decoration: none;">
-              <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
-              <div class="card-body">
-                <table class="table">
-                  <tbody>
-                    <tr class="prodName">
-                      <th>Product name</th>
-                      <td>{{prod.product_name}}</td>
-                    </tr>
-                    <tr class="prodDesc">
-                      <th>Description</th>
-                      <td>{{prod.product_description}}</td>
-                    </tr>
-                    <tr class="prodPrice">
-                      <th>Price</th>
-                      <td>{{prod.product_price}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+    <div class="col-md-3 sidenav">
+      <div class="container">
+        <div class="row">
+          {% if data %}
+            <div class="col">
+            <form action="{% url 'category' %}" method="GET">
+              {% for key, value in data.items %}
+              <a class="dropdown-btn btn dropdown-toggle">
+                <button class="cat-name" type="submit" value="{{key}}" name="category">
+                  {{key}}
+                </button>
+              </a>
+              <div class="dropdown-container">
+                {% for x in value %}
+                  <button type="submit" value="{{x}}" name="category" class="btn btn-primary btn-block" style="background-color:#262626;border:none;">{{x}}</button>
+                {% endfor %}
               </div>
-            </a>
-          </div>
-        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-          <p>Here you can add the product to your cart</p>
-          <form action="">
-            Quantity:
-            <input type="number" name="quantity" min="0" max="{prod.quantity}">
-            <input type="submit" value="Add to cart">
-          </form>
-        <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-          <span class="heading">User Rating</span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star"></span>
-          <p>4.1 average based on 254 reviews.</p>
-          <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-
-          <div class="row">
-            <div class="side">
-              <div>5 star</div>
+              {% endfor %}
+              <!-- <input type="submit" value="{{value}}" name="category" class="btn btn-primary mt-1"/> -->
+            </form>
             </div>
-            <div class="middle">
-              <div class="bar-container">
-                <div class="bar-5"></div>
-              </div>
-            </div>
-            <div class="side right">
-              <div>150</div>
-            </div>
-            <div class="side">
-              <div>4 star</div>
-            </div>
-            <div class="middle">
-              <div class="bar-container">
-                <div class="bar-4"></div>
-              </div>
-            </div>
-            <div class="side right">
-              <div>63</div>
-            </div>
-            <div class="side">
-              <div>3 star</div>
-            </div>
-            <div class="middle">
-              <div class="bar-container">
-                <div class="bar-3"></div>
-              </div>
-            </div>
-            <div class="side right">
-              <div>15</div>
-            </div>
-            <div class="side">
-              <div>2 star</div>
-            </div>
-            <div class="middle">
-              <div class="bar-container">
-                <div class="bar-2"></div>
-              </div>
-            </div>
-            <div class="side right">
-              <div>6</div>
-            </div>
-            <div class="side">
-              <div>1 star</div>
-            </div>
-            <div class="middle">
-              <div class="bar-container">
-                <div class="bar-1"></div>
-              </div>
-            </div>
-            <div class="side right">
-              <div>20</div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button  value="" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+          {% endif %}
         </div>
       </div>
     </div>
-    {%endfor%}
+    <div class="col-md-8">
+      <div class="container">
+        <div class="row">     
+          {% for prod in product %}
+          <div class="col-md-6 mt-2">
+            <div class="card">
+              <a class="stretched-link open-modal" id="myBtn{{prod.id}}" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal{{ prod.id }}">
+                <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+                <div class="card-body">
+                  <table class="table" style="table-layout: fixed;">
+                    <tbody>
+                      <tr class="prodName">
+                        <th>Product name</th>
+                        <td style="word-wrap: break-word">{{prod.product_name}}</td>
+                      </tr>
+                      <tr class="prodDesc">
+                        <th>Description</th>
+                        <td style="word-wrap: break-word">{{prod.product_description}}</td>
+                      </tr>
+                      <tr class="prodPrice">
+                        <th>Price</th>
+                        <td style="word-wrap: break-word">{{prod.product_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="modal fade" id="myModal{{ prod.id }}" role="dialog">
+          <div class="modal-dialog modal-lg">
+            {% csrf_token %}
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">{{prod.product_name}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body ratingform"> 
+                <div class="card">
+                  <a class="stretched-link open-modal" style="color:black;text-decoration: none;">
+                    <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+                    <div class="card-body">
+                      <table class="table">
+                        <tbody>
+                          <tr class="prodName">
+                            <th>Product name</th>
+                            <td>{{prod.product_name}}</td>
+                          </tr>
+                          <tr class="prodDesc">
+                            <th>Description</th>
+                            <td>{{prod.product_description}}</td>
+                          </tr>
+                          <tr class="prodPrice">
+                            <th>Price</th>
+                            <td>{{prod.product_price}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{prod.product_user}}, 1 minutes ago</small></p>
+                    </div>
+                  </a>
+                </div>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                <div class="addtocart">
+                  <p>Here you can add the product to your cart</p>
+                  <form action="">
+                    Quantity:
+                    <input type="number" name="quantity" min="0" max="{prod.quantity}">
+                    <input type="submit" value="Add to cart">
+                  </form>
+                </div>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6 mt-2" style="border-right: 2px solid black;">
+                    <h3 style="text-align:center;">User Rating</h3>
+                      <br>
+                      {% if user.is_authenticated %}
+                      <form action="" method="POST">
+                        {% csrf_token %}
+                        <fieldset class="rating">
+                          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                        <br><br>
+                        <a href="" class="btn btn-primary">Save rating</a></a>
+                      </fieldset>
+                      </form>
+                      {% else %}
+                        <p>You need to login in order to rate.</p>
+                      {% endif %}
+                    </div>
+                    <div class="col-md-6 mt-2" style="padding-left:25px;">
+                      <p>x average based on x reviews.</p>
+                      <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                        <div class="row">
+                          <div class="side">
+                            <div>5 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-5"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>150</div>
+                          </div>
+                          <div class="side">
+                            <div>4 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-4"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>63</div>
+                          </div>
+                          <div class="side">
+                            <div>3 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-3"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>15</div>
+                          </div>
+                          <div class="side">
+                            <div>2 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-2"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>6</div>
+                          </div>
+                          <div class="side">
+                            <div>1 star</div>
+                          </div>
+                          <div class="middle">
+                            <div class="bar-container">
+                              <div class="bar-1"></div>
+                            </div>
+                          </div>
+                          <div class="side right">
+                            <div>20</div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button  value="" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
   </div>
   {%endif%} 
-
+</div>
 <script>
   var a = "{{ prod.id }}"
   $(document).ready(function(){
@@ -249,68 +296,27 @@
   });
 </script>
 <script>
-$(function()
-{
-    function after_form_submitted(data)
-    {
-        if(data.result == 'success')
-        {
-            $('form#reused_form').hide();
-            $('#success_message').show();
-            $('#error_message').hide();
-        }
-        else
-        {
-            $('#error_message').append('<ul></ul>');
-
-            jQuery.each(data.errors,function(key,val)
-            {
-                $('#error_message ul').append('<li>'+key+':'+val+'</li>');
-            });
-            $('#success_message').hide();
-            $('#error_message').show();
-
-            //reverse the response on the button
-            $('button[type="button"]', $form).each(function()
-            {
-                $btn = $(this);
-                label = $btn.prop('orig_label');
-                if(label)
-                {
-                    $btn.prop('type','submit' );
-                    $btn.text(label);
-                    $btn.prop('orig_label','');
-                }
-            });
-
-        }//else
+var rating = document.querySelector('input[name = "rating"]:checked').value;
+$(document).on('submit', '#post-form',function(e){
+    $.ajax({
+        type:'POST',
+        url:'{% url "save-review" %}',
+        data:{
+            grade:rating,
+            product:$('#prodname').val(),
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            action: 'post'
+        },
+        success:function(json){
+            document.getElementById("post-form").reset();
+            alert("success")
+        },
+        error : function(xhr,errmsg,err) {
+        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
     }
-
-	$('#reused_form').submit(function(e)
-      {
-        e.preventDefault();
-
-        $form = $(this);
-        //show some response on the button
-        $('button[type="submit"]', $form).each(function()
-        {
-            $btn = $(this);
-            $btn.prop('type','button' );
-            $btn.prop('orig_label',$btn.text());
-            $btn.text('Sending ...');
-        });
-
-
-                    $.ajax({
-                type: "POST",
-                url: 'handler.php',
-                data: $form.serialize(),
-                success: after_form_submitted,
-                dataType: 'json'
-            });
-
-      });
+    });
 });
+
 </script>
 <script>
 var dropdown = document.getElementsByClassName("dropdown-btn");

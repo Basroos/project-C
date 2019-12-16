@@ -8,9 +8,10 @@ from django.shortcuts import get_object_or_404
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
+    form = ReviewForm()
     search = {"Vegetable": ["Mais", "Peach", "Brocolli", "Carrot", "Tomato"],
               "Fruit": ["Banana", "Kiwi","Apple","Strawberry"]}
-    context = {'product': Product.objects.all(), "data": search,'navigation':'products',}
+    context = {'product': Product.objects.all(), "data": search,'navigation':'products', 'form': form}
     return render(request, template_name, context)
 
 
@@ -85,3 +86,24 @@ def post_product(request):
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
+
+def review_product(request):
+    reviews = Review.objects.all()
+    response_data = {}
+
+    if request.POST.get('action') == 'post':
+        grade = request.POST.get('grade')
+        product = request.POST.get('product')
+        user = request.user
+
+        response_data['grade'] = grade
+        response_data['product'] = product
+
+        Review.objects.create(
+            grade = grade,
+            product = product,
+            user = user
+        )
+        return JsonResponse(response_data)
+
+    return render(request, 'user_profile/product.html', {'reviews':reviews})      
