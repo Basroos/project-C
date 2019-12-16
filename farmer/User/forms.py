@@ -31,3 +31,4 @@ class SignUpForm2(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'name', 'address', 'email','password1', 'password2')
+    #users and farmers
