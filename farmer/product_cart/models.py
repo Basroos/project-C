@@ -1,16 +1,16 @@
 from django.db import models
 from user_profile.models import Product
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
-#if user is the farmer
 from farmer_page.models import Farmer
 
 
 
 
 class OrderItem(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
@@ -23,7 +23,7 @@ class OrderItem(models.Model):
     
 
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     items = models.ManyToManyField(OrderItem)
     creationDate = models.DateTimeField(auto_now_add=True)

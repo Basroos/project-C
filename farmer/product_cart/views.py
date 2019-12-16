@@ -38,6 +38,8 @@ def add_to_cart(request, id):
         ordered_date = timezone.now()
         order = Order.objects.create(user=request.user, orderedDate=ordered_date)
         order.items.add(order_item)
+        order_item.quantity = iqty
+        order_item.save()
         messages.info(request,"this item was added to your cart")
         return redirect("cartView")
         
