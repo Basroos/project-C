@@ -1,6 +1,6 @@
 from django.contrib import admin
-from product_cart.models import order
-from product_cart.models import orderItem
+from product_cart.models import Order
+from product_cart.models import OrderItem
 
-admin.site.register(order)
-admin.site.register(orderItem)
+admin.site.register(Order)
+admin.site.register(OrderItem)

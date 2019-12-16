@@ -17,11 +17,12 @@ class Product(models.Model):
     product_description = models.CharField(max_length=300)
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     product_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField()
+    stock = models.IntegerField()
 
 
-    def __str__(self):
-        return "Farmer " + self.product_user.username + "\tProduct " + self.product_name
+    def __int__(self):
+        #return "Farmer " + self.product_user.username + "\tProduct " + self.product_name
+        return self.id
     
 
     
@@ -36,10 +37,9 @@ class Product(models.Model):
         return reverse("product_cart:remove-from-cart", kwargs={
         "id": self.id
         })
+
     product_picture = models.ImageField(blank=True, upload_to='images/')
 
-    def __str__(self):
-        return "Farmer " + self.product_user.username + "\tProduct " + self.product_name
 
 class Review(models.Model):
     name = models.CharField(max_length=20)

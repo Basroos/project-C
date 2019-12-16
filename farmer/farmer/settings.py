@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profile_page',
     'crispy_forms',
-    'product_cart'
-    'debug_toolbar',
+    'product_cart',
+    # 'debug_toolbar',
     'smartfields',
     'django_send_email',
 ]

@@ -156,9 +156,9 @@
           </div>
         <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
           <p>Here you can add the product to your cart</p>
-          <form action="">
+          <form method='GET' action="{% url "add-to-cart" prod.id%}">
             Quantity:
-            <input type="number" name="quantity" min="0" max="{prod.quantity}">
+            <input type="number" name="qty" min="0" max="{{prod.stock}}">
             <input type="submit" value="Add to cart">
           </form>
         <hr style="width: 100%; color: black; height: 1px; background-color:black;" />

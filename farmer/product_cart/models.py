@@ -9,31 +9,30 @@ from farmer_page.models import Farmer
 
 
 
-class orderItem(models.Model):
+class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=0)
+    #subTotal = models.DecimalField(max_digits=10000, decimal_places=2)
 
 
-    def __str__(self):
-        return self.item.product_name
+    def __int__(self):
+        #return self.item.product_name
+        return self.id
     
 
-class order(models.Model):
+class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
-    items = models.ManyToManyField(orderItem)
+    items = models.ManyToManyField(OrderItem)
     creationDate = models.DateTimeField(auto_now_add=True)
     orderedDate = models.DateTimeField()
-    total = models.FloatField()
+    #total = models.DecimalField(max_digits=10000, decimal_places=2)
+ 
+
 
     def __str__(self):
         return self.user.username
 
-    @property
-    def total_price(self):
-        return self.orderItem_set.aggregate(
-            total_price=Sum(F('quantity') * F('Product__price'))
-        )['total_price'] or Decimal('0')
 
