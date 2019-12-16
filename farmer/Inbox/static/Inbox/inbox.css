@@ -1,4 +1,9 @@
-.container{max-width:1170px; margin:auto;}
+body {
+  background-color: grey;
+}
+
+.container{max-width:1170px; margin:auto; position: absolute;left: 50%;
+  top: 45%;transform: translate(-50%, -50%);}
 
 img{ max-width:100%;}
 
@@ -93,12 +98,13 @@ img{ max-width:100%;}
 }
 .received_withd_msg { width: 57%;}
 .mesgs {
+  background-color: white;
   float: left;
-  padding: 30px 15px 0 25px;
+  padding: 30px 15px 7px 25px;
   width: 60%;
 }
 
- .sent_msg p {
+.sent_msg p {
   background: #05728f none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
