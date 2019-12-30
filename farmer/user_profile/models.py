@@ -13,3 +13,11 @@ class Product(models.Model):
     def __str__(self):
         return "Farmer " + self.product_user.username + "\tProduct " + self.product_name
 
+class productReview(models.Model):
+    review_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review_title = models.CharField(max_length=30)
+    review_message = models.CharField(max_length=200)
+    review_product = models.OneToOneField(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Product " + self.review_product.product_name + "\ttitle " + review_title

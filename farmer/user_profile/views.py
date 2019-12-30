@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
-    form = ReviewForm()
+    form = ProductForm()
     search = {"Vegetable": ["Mais", "Peach", "Brocolli", "Carrot", "Tomato"],
               "Fruit": ["Banana", "Kiwi","Apple","Strawberry"]}
     context = {'product': Product.objects.all(), "data": search,'navigation':'products', 'form': form}
