@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'User',
+    'Inbox',
     'home_page.apps.HomePageConfig',
     'farmer_page.apps.FarmerPageConfig',
     'user_profile.apps.UserProfileConfig',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'django_send_email',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 ]
 
 

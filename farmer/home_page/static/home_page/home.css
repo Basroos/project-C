@@ -32,7 +32,7 @@ body {
   padding: 0px !important;
 }
 .nav-link:hover {
-  color: #000;
+  color: white!important;
 }
 .navbar-collapse {
   justify-content: flex-end;
@@ -61,7 +61,6 @@ p {
 
 #second {
   width: 100%;
-  background-color: #6ab446;
   padding: 2%;
 }
 
@@ -106,6 +105,12 @@ p {
   height: 230px;
 }
 
+.content {
+  background-color: #cda434;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 500%;
@@ -116,4 +121,12 @@ p {
   .btn-default {
     font-size: 130%;
   }
+}
+
+td {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
 }

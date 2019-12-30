@@ -1,72 +1,71 @@
 {% extends 'home_page/base.html' %}
 {% load static %}
+{%block title%}My profile{%endblock%}
 <!--Main layout-->
 {%block content%}
 {% load crispy_forms_tags %}
 
-<main class="mt-5">
 
-    <!--Main container-->
-    <div class="container">
+<div class="container-fluid" style="background-color:white !important; border:1px solid black; width:80%; border-radius:10px;padding-top:2%">
 
-      <!--Grid row-->
-      <div id="info" class="row justify-content-md-center">
+<!--Grid row-->
+<div id="info" class="row justify-content-md-center">
 
-        <!--Grid column-->
-        <div id="profile_pic" class="col-md-4 mb-4">
+  <!--Grid column-->
+  <div id="profile_pic" class="col-md-4 mb-4">
 
-          <div class="view overlay z-depth-1-half">
-            <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="">
-            <div class="mask rgba-white-light"></div>
-          </div>
+    <div class="view overlay z-depth-1-half">
+      <img src="{% static 'profile_page/avatar.jpg' %}" class="card-img-top" alt="">
+      <div class="mask rgba-white-light"></div>
+    </div>
 
-        </div>
-        <!--Grid column-->
+  </div>
+  <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
-          <div id="general_info" class="card">
-            <div class="card-body" class="table-responsive-sm">
-              <h4 class="card-title">General info</h4>
-                <table class="table">
-                  <tbody>
-                      <tr>
-                        <th>First Name</th>
-                          <td>{{profile.name}}</td>
-                      </tr>
-                      <tr>
-                        <th>Last Name</th>
-                          <td>Carter</td>
-                      </tr>
-                      <tr>
-                        <th>Email</th>
-                          <td>johncarter@mail.com</td>
-                      </tr>
-                      <tr>
-                        <th>Farm Name</th>
-                          <td>{{profile.company_name}}</td>
-                      </tr>
-                      <tr>
-                        <th>Address</th>
-                          <td>{{profile.address}}</td>
-                      </tr>
-                      <tr>
-                        <th>Province</th>
-                          <td>{{profile.province}}</td>
-                      </tr>
-                      <tr>
-                        <th>Phonenumber</th>
-                          <td>{{profile.phone_number}}</td>
-                      </tr>
-                        <tr>
-                        <th>Products</th>
-                          <td>{{profile.products}}</td>
-                      </tr>
-                  </tbody>
-              </table>
-                <a href="{% url 'update-profile' %}"class="btn btn-primary">Update your profile</a></a>
-            </div>
-          </div>
-        </div>
+  <!--Grid column-->
+  <div class="col-md-6 mb-4">
+    <div id="general_info" class="card">
+      <div class="card-body" class="table-responsive-sm">
+        <h4 class="card-title">General info</h4>
+          <table class="table">
+            <tbody>
+                <tr>
+                  <th>First Name</th>
+                    <td>{{profile.name}}</td>
+                </tr>
+                <tr>
+                  <th>Last Name</th>
+                    <td>Carter</td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                    <td>johncarter@mail.com</td>
+                </tr>
+                <tr>
+                  <th>Farm Name</th>
+                    <td>{{profile.company_name}}</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                    <td>{{profile.address}}</td>
+                </tr>
+                <tr>
+                  <th>Province</th>
+                    <td>{{profile.province}}</td>
+                </tr>
+                <tr>
+                  <th>Phonenumber</th>
+                    <td>{{profile.phone_number}}</td>
+                </tr>
+                  <tr>
+                  <th>Products</th>
+                    <td>{{profile.products}}</td>
+                </tr>
+            </tbody>
+        </table>
+          <a href="{% url 'update-profile' %}"class="btn btn-primary">Update your profile</a></a>
+      </div>
+    </div>
+  </div>
 </body>
 {%endblock content%}

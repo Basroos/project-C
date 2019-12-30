@@ -1,0 +1,112 @@
+/* Fixed sidenav, full height */
+.sidenav {
+   background-color: #111;
+   overflow-x: hidden;
+   padding-top: 20px;
+   border-radius: 10px;
+ }
+ 
+ /* Style the sidenav links and the dropdown button */
+ .sidenav a, .dropdown-btn {
+   padding: 20px 8px 20px 16px;
+   border-bottom: 1px solid white !important;
+   border-radius: 0;
+   text-decoration: none;
+   font-size: 20px;
+   color: #818181;
+   display: block;
+   border: none;
+   background: none;
+   width: 100%;
+   text-align: left;
+   cursor: pointer;
+   outline: none;
+ }
+ 
+ /* On mouse-over */
+ .sidenav a:hover, .dropdown-btn:hover {
+   color: #f1f1f1;
+ }
+ 
+ .cat-name {
+    background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 25px;
+  width:90%;
+ }
+
+ .addtocart {
+   width: 100%;
+   margin: auto;
+   text-align: center;
+   font-size: 16px;
+ }
+ 
+ /* Add an active class to the active dropdown button */
+ .active {
+   color: white;
+ }
+ 
+ /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+ .dropdown-container {
+   display: none;
+   background-color: #262626;
+   padding: 8px;
+ }
+
+ /*@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);*/
+
+fieldset, label { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+  margin-left: 10%;
+  align-items: center;
+  justify-content: center
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+ 
+ /* Some media queries for responsiveness */
+ @media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+   .sidenav a {font-size: 18px;}
+ }

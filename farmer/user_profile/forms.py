@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from user_profile.models import Product
-
+from .models import Product
 
 class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
