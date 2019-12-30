@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Farmer(models.Model):
     # naam, adres, leeftijd, provincie, email, bedrijfsnaam, telefoonnummer, producten
     name = models.CharField(max_length=60)
-    fullname = models.CharField(max_length=44, default='ome henk', null=True)
+    fullname = models.CharField(max_length=44, default='ome henk')
     address = models.CharField(max_length=50)
     email = models.EmailField(max_length=30, default="fbaba@gmail.com")
     age = models.CharField(max_length=2)
