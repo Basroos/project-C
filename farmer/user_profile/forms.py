@@ -19,7 +19,7 @@ class ProductForm(forms.ModelForm):
 
 class ReviewForm(forms.ModelForm):
     review_title = forms.CharField(max_length=30)
-    review_message = forms.CharField(max_length=200)
+    review_message = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}), max_length=200)
 
     class Meta:
         model = productReview

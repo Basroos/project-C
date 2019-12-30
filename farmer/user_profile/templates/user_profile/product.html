@@ -1,4 +1,5 @@
-{% extends 'home_page/base.html' %} {%load static%} {%block styles%}
+{% extends 'home_page/base.html' %} {%load static%} 
+{% load crispy_forms_tags %}{%block styles%}
 <link rel="stylesheet" href="{% static 'home_page/home.css'%}" />
 <link rel="stylesheet" href="{% static 'user_profile/form.css'%}" >
 <link rel="stylesheet" href="{% static 'user_profile/category.css'%}" >
@@ -200,18 +201,22 @@
                       {% if user.is_authenticated %}
                       <form action="" method="POST">
                         {% csrf_token %}
-                        {{reviewform}}
+                        {{reviewform|crispy}}
                         <input type="hidden" id="prodId" name="prodId" value="{{prod.id}}">
-                        <input class="btn btn-primary" type="submit"></input>
+                        <input class="btn btn-primary" type="submit" value="Submit review"></input>
                       </form>
                       {% else %}
                         <p>You need to login in order to rate.</p>
                       {% endif %}
                     </div>
-                    <div class="col-md-6 mt-2" style="padding-left:25px;">
+                    <div class="col-md-6 mt-2" style="padding-left:25px; max-height: 400px; overflow: scroll;">
                       {% for x in review%}
                         {% if x.review_product == prod.id %}
-                          {{x}}
+                          <div class="container" style=" margin-top:1%;">
+                          <b>{{x.review_title}}</b> 
+                          <p style="padding:0 !important; word-wrap: break-word">{{x.review_message}}</p>
+                          </div>
+                          <hr style="width: 100%; color: lightgrey; height: 1px; background-color:lightgrey;" />
                         {% else %}
                           
                         {% endif %}
