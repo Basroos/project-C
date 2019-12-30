@@ -1,17 +1,30 @@
 from django.shortcuts import render
-from user_profile.forms import ProductForm
-from user_profile.models import Product
+from user_profile.forms import ProductForm, ReviewForm
+from user_profile.models import Product, productReview
 from profile_page.models import Farmer
 from django.shortcuts import get_object_or_404
+from user_profile.models import productReview
 # Create your views here.
 
 
 def user_profile(request):
     template_name = 'user_profile/product.html'
     form = ProductForm()
+
+    form2 = ReviewForm()
+    if request.method == "POST":
+        form2 = ReviewForm(request.POST)
+        if form2.is_valid():
+            title = form2.cleaned_data['review_title']
+            message = form2.cleaned_data['review_message']
+            id = request.POST['prodId']
+            print(id)
+            saving = productReview(review_title=title, review_message=message, review_product=id)
+            saving.save()
+
     search = {"Vegetable": ["Mais", "Peach", "Brocolli", "Carrot", "Tomato"],
               "Fruit": ["Banana", "Kiwi","Apple","Strawberry"]}
-    context = {'product': Product.objects.all(), "data": search,'navigation':'products', 'form': form}
+    context = {'product': Product.objects.all(), 'review': productReview.objects.all(), "data": search,'navigation':'products', 'form': form, 'reviewform':form2}
     return render(request, template_name, context)
 
 
@@ -88,22 +101,12 @@ def post_product(request):
     return render(request, template_name, {'form':form})
 
 def review_product(request):
-    reviews = Review.objects.all()
-    response_data = {}
+    form = ReviewForm()
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['review_title']
+            message = form.cleaned_data['review_message']
 
-    if request.POST.get('action') == 'post':
-        grade = request.POST.get('grade')
-        product = request.POST.get('product')
-        user = request.user
 
-        response_data['grade'] = grade
-        response_data['product'] = product
-
-        Review.objects.create(
-            grade = grade,
-            product = product,
-            user = user
-        )
-        return JsonResponse(response_data)
-
-    return render(request, 'user_profile/product.html', {'reviews':reviews})      
+    return render(request, 'user_profile/product.html', {'reviews':reviews, 'reviewform':form})      

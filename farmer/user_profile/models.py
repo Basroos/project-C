@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
     product_description = models.CharField(max_length=300)
@@ -14,10 +13,9 @@ class Product(models.Model):
         return "Farmer " + self.product_user.username + "\tProduct " + self.product_name
 
 class productReview(models.Model):
-    review_user = models.ForeignKey(User, on_delete=models.CASCADE)
     review_title = models.CharField(max_length=30)
     review_message = models.CharField(max_length=200)
-    review_product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    review_product = models.IntegerField()
 
     def __str__(self):
-        return "Product " + self.review_product.product_name + "\ttitle " + review_title
+        return "Product " + str(self.review_product) + "\ttitle " + self.review_title    

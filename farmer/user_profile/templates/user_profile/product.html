@@ -1,5 +1,5 @@
 {% extends 'home_page/base.html' %} {%load static%} {%block styles%}
-<link rel="stylesheet" href="{%static 'home_page/home.css'%}" />
+<link rel="stylesheet" href="{% static 'home_page/home.css'%}" />
 <link rel="stylesheet" href="{% static 'user_profile/form.css'%}" >
 <link rel="stylesheet" href="{% static 'user_profile/category.css'%}" >
 {%endblock styles%} 
@@ -104,7 +104,7 @@
               </a>
               <div class="dropdown-container">
                 {% for x in value %}
-                  <button type="submit" value="{{x}}" name="category" class="btn btn-primary btn-block" style="background-color:#262626;border:none;">{{x}}</button>
+                  <button type="submit" value="{{x}}" name="category" class="btn btn-primary btn-block" style="background-color:none;border:none;">{{x}}</button>
                 {% endfor %}
               </div>
               {% endfor %}
@@ -122,7 +122,11 @@
           <div class="col-md-6 mt-2">
             <div class="card">
               <a class="stretched-link open-modal" id="myBtn{{prod.id}}" style="color:black;text-decoration: none;" data-toggle="modal" data-target="#myModal{{ prod.id }}">
-                <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}"alt="Card image cap" />
+                            {% if prod.product_picture %}
+            <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />
+            {% else %}
+            <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+            {% endif %}
                 <div class="card-body">
                   <table class="table" style="table-layout: fixed;">
                     <tbody>
@@ -191,79 +195,27 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6 mt-2" style="border-right: 2px solid black;">
-                    <h3 style="text-align:center;">User Rating</h3>
+                    <h3 style="text-align:center;">Review</h3>
                       <br>
                       {% if user.is_authenticated %}
                       <form action="" method="POST">
                         {% csrf_token %}
-                        
-                        <a href="" class="btn btn-primary">Save review</a></a>
-                      </fieldset>
+                        {{reviewform}}
+                        <input type="hidden" id="prodId" name="prodId" value="{{prod.id}}">
+                        <input class="btn btn-primary" type="submit"></input>
                       </form>
                       {% else %}
                         <p>You need to login in order to rate.</p>
                       {% endif %}
                     </div>
                     <div class="col-md-6 mt-2" style="padding-left:25px;">
-                      <p>x average based on x reviews.</p>
-                      <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-                        <div class="row">
-                          <div class="side">
-                            <div>5 star</div>
-                          </div>
-                          <div class="middle">
-                            <div class="bar-container">
-                              <div class="bar-5"></div>
-                            </div>
-                          </div>
-                          <div class="side right">
-                            <div>150</div>
-                          </div>
-                          <div class="side">
-                            <div>4 star</div>
-                          </div>
-                          <div class="middle">
-                            <div class="bar-container">
-                              <div class="bar-4"></div>
-                            </div>
-                          </div>
-                          <div class="side right">
-                            <div>63</div>
-                          </div>
-                          <div class="side">
-                            <div>3 star</div>
-                          </div>
-                          <div class="middle">
-                            <div class="bar-container">
-                              <div class="bar-3"></div>
-                            </div>
-                          </div>
-                          <div class="side right">
-                            <div>15</div>
-                          </div>
-                          <div class="side">
-                            <div>2 star</div>
-                          </div>
-                          <div class="middle">
-                            <div class="bar-container">
-                              <div class="bar-2"></div>
-                            </div>
-                          </div>
-                          <div class="side right">
-                            <div>6</div>
-                          </div>
-                          <div class="side">
-                            <div>1 star</div>
-                          </div>
-                          <div class="middle">
-                            <div class="bar-container">
-                              <div class="bar-1"></div>
-                            </div>
-                          </div>
-                          <div class="side right">
-                            <div>20</div>
-                          </div>
-                        </div>
+                      {% for x in review%}
+                        {% if x.review_product == prod.id %}
+                          {{x}}
+                        {% else %}
+                          
+                        {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
@@ -288,29 +240,6 @@
       $("#myModal"+a).modal({show:true});
     });
   });
-</script>
-<script>
-var rating = document.querySelector('input[name = "rating"]:checked').value;
-$(document).on('submit', '#post-form',function(e){
-    $.ajax({
-        type:'POST',
-        url:'{% url "save-review" %}',
-        data:{
-            grade:rating,
-            product:$('#prodname').val(),
-            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            action: 'post'
-        },
-        success:function(json){
-            document.getElementById("post-form").reset();
-            alert("success")
-        },
-        error : function(xhr,errmsg,err) {
-        console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-    }
-    });
-});
-
 </script>
 <script>
 var dropdown = document.getElementsByClassName("dropdown-btn");
