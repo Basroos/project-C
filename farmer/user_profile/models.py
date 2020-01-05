@@ -10,7 +10,7 @@ class Product(models.Model):
     product_description = models.CharField(max_length=300)
     product_price = models.DecimalField(max_digits=6, decimal_places=2)
     product_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stock = models.IntegerField()
+    stock = models.IntegerField(default=1)
 
 
     def __int__(self):
