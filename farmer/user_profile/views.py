@@ -2,6 +2,7 @@ from django.shortcuts import render
 from user_profile.forms import ProductForm, ReviewForm
 from user_profile.models import Product, productReview
 from profile_page.models import Farmer
+from django.views.generic import DetailView
 from django.shortcuts import get_object_or_404
 from user_profile.models import productReview
 # Create your views here.

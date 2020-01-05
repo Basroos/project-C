@@ -2,6 +2,7 @@ import os
 from django.core.mail import send_mail
 from django.shortcuts import render
 from .models import Farmer, farmerReview
+from user_profile.models import Product
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, get_list_or_404, redirect
 from farmer_page.models import Farmer, farmerReview
@@ -15,7 +16,7 @@ from sendgrid.helpers.mail import Mail
 
 def farmer_index(request):
     context = {'info': Farmer.objects.all(),
-                'navigation':'farmer',}
+                'navigation':'farmer'}
     return render(request, 'farmer_page/farmer.html', context)
 
 def profile(request, id):
@@ -46,7 +47,8 @@ def profile(request, id):
             saving = farmerReview(review_title=title, review_message=message, review_farmer=id)
             saving.save()
     form = ReportForm()
-    context = {'info':farmer,'review': farmerReview.objects.all(),"form":form,'reviewform':form2}
+    context = {'info':farmer,'review': farmerReview.objects.all(),"form":form,'reviewform':form2,'farmer':farmer,
+                'prods':Product.objects.all()  }
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):

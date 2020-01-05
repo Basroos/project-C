@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profile_page',
     'crispy_forms',
+    'product_cart',
     'debug_toolbar',
     'smartfields',
     'django_send_email',
@@ -139,6 +140,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 ALLOWED_HOSTS = []
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
