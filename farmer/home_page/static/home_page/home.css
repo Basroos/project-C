@@ -64,13 +64,16 @@ p {
   padding: 2%;
 }
 
-#infodiv {
-  margin-left: 15%;
-  text-align: center;
+#container {
+  color: white;
+  background: rgb(58, 58, 58);
   width: 70%;
-  height: auto;
-  background-color: #ffffff;
-  border: 1px solid black;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+  font-family: sans-serif;
 }
 
 #demo {
