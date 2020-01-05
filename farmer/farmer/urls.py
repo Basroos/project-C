@@ -13,5 +13,6 @@ urlpatterns = [
     path('login/', include('User.urls')),
     path('inbox/', include('Inbox.urls')),
     path('products/', include('user_profile.urls')),
+    path('',include('product_cart.urls')),
     path('__debug__/', include(debug_toolbar.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

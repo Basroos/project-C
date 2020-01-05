@@ -46,7 +46,9 @@
                         <li class="{% if navigation == 'farmer' %} nav-item active {% else %} nav-item {% endif %}">
                             <a class="nav-link" href="{% url 'farmer-index' %}">Farmers</a>
                         </li>
-
+                        <li class="{% if navigation == 'cartView' %} nav-item active {% else %} nav-item {% endif %}">
+                            <a class="nav-link" href="{% url 'cartView' %}">Cart</a>
+                        </li>
                     </ul>
 
                     {% block search %}

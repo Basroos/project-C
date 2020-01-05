@@ -1,0 +1,40 @@
+{% extends 'home_page/base.html' %} 
+
+{% load static %}
+
+
+
+    {% block content %}
+
+
+    <div class="cart_box">
+
+
+        <div class='col-sm-12 col-sm-offset-2'>
+
+        <table class='table'>
+        <thead>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        </thead>
+
+        <tfoot>
+        <tr>
+        <td></td>
+        
+        </tr>
+        </tfoot>
+
+        {% for Citem in cart.items.all %}
+
+        <tr><td>{{ Citem.item }}</td><td>{{ Citem.quantity}}</td><td>{{ Citem.getSubTotal }}</td><td><a href={% url "remove-from-cart" Citem.item.id %}>remove from cart</a></td></tr>
+        
+        {% endfor %}
+        <tr><td><b>Total: </b></td><td></td><td><b>{{ cart.getTotal }}</b></td></tr>
+        </table>
+        </div>
+        <button class="cartButton", onclick="window.location.href = {% url "checkout"%}">Checkout</button>
+
+    </div>
+    {% endblock %}

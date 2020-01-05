@@ -2,6 +2,7 @@ from django.shortcuts import render
 from user_profile.forms import ProductForm
 from user_profile.models import Product
 from profile_page.models import Farmer
+from django.views.generic import DetailView
 from django.shortcuts import get_object_or_404
 # Create your views here.
 
