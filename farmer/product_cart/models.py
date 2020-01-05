@@ -14,13 +14,20 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
-    #subTotal = models.DecimalField(max_digits=10000, decimal_places=2)
 
 
     def __int__(self):
         #return self.item.product_name
         return self.id
-    
+
+    def getSubTotal(self):
+        return self.quantity * self.item.product_price
+
+    def getTotal(self):
+        total = 0
+        for Order_item in OrderItem.objects.all():
+            total += Order_item.getSubTotal()
+        return total    
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -28,11 +35,15 @@ class Order(models.Model):
     items = models.ManyToManyField(OrderItem)
     creationDate = models.DateTimeField(auto_now_add=True)
     orderedDate = models.DateTimeField()
-    #total = models.DecimalField(max_digits=10000, decimal_places=2)
- 
 
 
     def __str__(self):
         return self.user.username
+
+    def getTotal(self):
+        total = 0
+        for Order_item in self.items.all():
+            total += Order_item.getSubTotal()
+        return total
 
 

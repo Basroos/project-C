@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'profile_page',
     'crispy_forms',
     'product_cart',
-    # 'debug_toolbar',
+    'debug_toolbar',
     'smartfields',
     'django_send_email',
 ]
