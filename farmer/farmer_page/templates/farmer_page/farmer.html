@@ -26,7 +26,7 @@
 {%endif%}
 
 {% if result %}
-  <div class="container-fluid">
+<div class="container-fluid profile" style="background-color:white !important; border:1px solid black; width:80%; border-radius:10px;">
   <div class="row">
     {% for x in result%}
     <div class="col-md-5 border border-info rounded mt-3 mx-5">
@@ -41,15 +41,26 @@
     </div>
     {%endfor%}
 {% else %}
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:white !important; border:1px solid black; width:80%; border-radius:10px;">
   <div class="row">
     {% for x in info %}
     <div class="col-md-5 border border-info rounded mt-3 mx-5">
-      <i class="fas fa-user"></i>
-      {{x.name}}
-      <br>
-      <i class="fab fa-product-hunt"></i>
-      {{x.products}}
+      <table class="table">
+        <tbody>
+          <tr>
+            <th><i class="fas fa-user" style="padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name:</i></th>
+            <td style="width: 60%">{{x.name}}</td>
+          </tr>
+          <tr>
+            <th><i class="fas fa-address-card" style="padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;Farm Name:</i></th>
+            <td style="width: 60%">{{x.company_name}}</td>
+          </tr>
+          <tr>
+            <th><i class="fab fa-product-hunt" style="padding-right: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Products:</i></th>
+            <td style="width: 60%">{{x.products}}</td>
+          </tr>
+        </tbody>
+      </table>
     <div class="row">
       <a class="btn btn-outline-warning my-2 mx-2 stretched-link" href="{% url 'profile-index' x.id %}">See Profile</a>
      </div>

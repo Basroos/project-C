@@ -3,7 +3,6 @@ from django import forms
 from user_profile.models import Product
 from .models import Product
 
-
 class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
          self.user = kwargs.pop('user', None)

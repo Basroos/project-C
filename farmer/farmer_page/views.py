@@ -41,7 +41,7 @@ def profile(request, id):
             print(response.status_code)
             messages.success(request, 'REPORTED!')
     form = ReportForm()
-    context = {'farmer':farmer, "form":form}
+    context = {'farmer':farmer,"form":form,}
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):
