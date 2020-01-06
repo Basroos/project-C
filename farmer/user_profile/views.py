@@ -41,6 +41,26 @@ def category_products(request):
                     "Carrot", "Tomato"]
         result = Product.objects.filter(product_name__in=category)
 
+    elif category == "Legumes":
+        category = ["alfalfa","Azuki Beans","Black Beans","Bean Sprouts","Black-Eyed Peas","Green Beans","Kidney Beans","Lentils","Peanuts","Soy Beans","Peas"]
+        result = Product.objects.filter(product_name__in=category)
+
+    elif category == "Herbs":
+        category = ["Anise","Basil","Caraway","Coriander","Chamomile","Dill","Fennel","Lavender", "Cymbopogon","Marjoram","Oregano","Parsley","Rosemary","Sage","Thyme"]
+        result = Product.objects.filter(product_name__in=category)
+
+    elif category == "Onions":
+        category = ["Chives","Garlic","Leek","Onion","Shallot","Scallion"]
+        result = Product.objects.filter(product_name__in=category)
+    
+    elif category == "Peppers":
+        category = ["Bell Pepper","Jalapeño","Habanero","Paprika","Tabasco pepper","Cayenne pepper"]
+        result = Product.objects.filter(product_name__in=category)
+
+    elif category == "Root vegetables":
+        category = ["Beetroot","Carrot","Celeriac","Corms","Ginger","Parsnip","Rutabaga","Radish","Wasabi","Potato","Sweet Potato","Yam","Turnip"]
+        result = Product.objects.filter(product_name__in=category)
+
     elif category == "Fruit":
         category = ["Banana", "Kiwi", "Apple","Strawberry",]
         result = Product.objects.filter(product_name__in=category)
