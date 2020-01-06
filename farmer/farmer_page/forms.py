@@ -4,7 +4,6 @@ from farmer_page.models import Farmer, farmerReview
 class UpdateUser(forms.ModelForm):
     # email = forms.EmailField(
     #         max_length=40)
-    name = forms.CharField(max_length=60)
     farm = forms.CharField(max_length=30)
     phone_number = forms.CharField(max_length=10)
     address = forms.CharField(
@@ -19,7 +18,7 @@ class UpdateUser(forms.ModelForm):
     class Meta:
         model = Farmer
         # email
-        fields = ('name', 'age', 'farm', 'address', 'province', 'phone_number', 'products')
+        fields = ('age', 'farm', 'address', 'province', 'phone_number', 'products')
 
 class ReportForm(forms.Form):
     from_email = forms.EmailField(required=True)

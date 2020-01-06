@@ -8,3 +8,6 @@ def home_index(request):
 
 def login_index(request):
     return render(request, 'login_page/login.html')
+
+def guidelines(request):
+    return render(request, 'home_page/userguidelines.html')

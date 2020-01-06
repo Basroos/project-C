@@ -1,0 +1,52 @@
+{% extends 'home_page/base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Landing Page Website Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/home.css' %}">
+</head>
+
+<body>
+    {% block content%}
+    <div id="second"  style="word-wrap: break-word">
+      <h3 style="padding-left:3%;">User Guidelines</h3>
+      <p style="padding-top:0px; padding-bottom:0px;">farmerstore.com strongly believes in freedom of speech. We have a vast audience spread across many cultures, countries and backgrounds with varying values and our service is designed to let users freely express any ideas and opinions without us censoring or endorsing them. That being said, there are a few categories of content and behavior that we don’t permit because we consider them harmful to the community.
+      To be transparent about what is and isn’t allowed on your site, we’ve put together this set of guidelines. The following activity/material isn’t allowed on farmerstore.com.</p>
+      <hr style="border: 1px solid grey; margin-left:3%; width:94%;">
+      <div style="margin-left:3%;margin-top:0px;">
+         <h4>Illegal content and conduct.</h4>
+         <br>
+         Self-explanatory.
+         <h4>Intellectual property infringement.</h4>
+         <br>
+         farmerstore.com is a publishing, rather than a file sharing platform, so we recognize that copyrighted materials are often used in fair use context. We strongly support this and urge copyright holders to take this into consideration before submitting complaints. If you’re not sure, the golden rule is to always ask the rights holder for permission before republishing their content.
+         <br>
+         <h4>Calls to violence.</h4>
+         <br>
+         Do not publish realistic calls to violence. By that we mean that you cannot post content which threatens, incites, or promotes violence, physical harm, or death. This includes threats targeting individuals or groups, as well as other indiscriminate acts of violence. This restriction does not mean that we will remove hyperbolic or generally offensive language.
+         <br>
+         <h4>Posting private information.</h4>
+         <br>
+         Don’t share someone’s personal information without their consent. This includes collecting sensitive information in Contact Forms such as account passwords and credit card numbers, to name a couple.
+         <br>
+         <h4>Spam or machine-generated content.</h4>
+         <br>
+         You know what this is, but in general, sites such as those primarily dedicated to drive traffic to third party sites, boost SEO, phish, spoof, or promote affiliate marketing aren’t cool. We don’t want you to pollute the web outside of farmerstore.com either, so we ask you to please avoid sending unwanted or unsolicited promotions or emails about your site, even if it’s not on farmerstore.com.
+
+         Bear in mind that these are just guidelines — interpretations are solely up to us. These guidelines are not exhaustive and are subject to change.
+
+         If you believe a farmerstore.com site has violated our Terms of Service or any of these policies, please report the site. We aim to promptly review and investigate all complaints that we receive, but if and how we respond will depend on a variety of factors, such as the information available to us and the type of violation. We may also contact the site owner to inform him/her of the complaint.
+      </div>
+      </p>
+    </div>
+    {%endblock content%}
+</body>
+</html>

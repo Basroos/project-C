@@ -29,7 +29,9 @@ def user_profile(request):
               "Onions":["Chives","Garlic","Leek","onion","shallot","scallion"],
               "Peppers":["bell pepper","Jalapeño","Habanero","Paprika","Tabasco pepper","Cayenne pepper"],
               "Root vegetables":["beetroot","carrot","celeriac","corms","ginger","parsnip","rutabaga","radish","wasabi","potato","sweet potato","yam","turnip"],
-              "Fruit": ["Banana", "Kiwi","Apple","Peach", "Strawberry"]}
+              "Fruit": ["Açaí","Akee","Apple","Apricot","Avocado","Banana","Blackberry","Blackcurrant","Blueberry","Crab apple","Cherry","Coconut","Cranberry","Date","Dragonfruit","Grape",
+              "Grapefruit","Guava","Kiwifruit","Lemon","Lime","Lychee","Mango","Cataloupe Melon","Watermelon","Honeydew Melon","Nectarine","Blood orange","Mandarine","Clementine Orange","Papaya",
+              "Passionfruit","Peach","Pear","Persimmon","Plantain","Prune","Pineapple","Plumcot","Pomegranate","Pomelo","Raspberry","Redcurrant","Strawberry","White currant"]}
     context = {'product': Product.objects.all(), 'review': productReview.objects.all(), "data": search,'navigation':'products', 'form': form, 'reviewform':form2}
     return render(request, template_name, context)
 

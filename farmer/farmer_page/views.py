@@ -61,7 +61,6 @@ def my_products(request):
 
 def my_profile(request):
     current_user = request.user.username
-    print(current_user)
     template = 'farmer_page/my_profile.html'
     profile = get_object_or_404(Farmer, name=current_user)
     context = {'profile':profile}
