@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 
 
-@login_required
+@login_required(login_url='/login/login')
 def add_to_cart(request, id):
     try:
         qty = request.GET.get('qty')
@@ -49,7 +49,7 @@ def add_to_cart(request, id):
             return redirect("cartView")
         
     
-@login_required
+@login_required(login_url='/login/login')
 def remove_from_cart(request, id):
     item = get_object_or_404(Product, id=id)
     orderQS = Order.objects.filter(
@@ -90,7 +90,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     return render(request, template)
 
-
+@login_required(login_url='/login/login')
 def cartView(request):
     orderQS = Order.objects.filter(user=request.user, ordered=False)
     if orderQS.exists():
@@ -98,7 +98,7 @@ def cartView(request):
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(user=request.user, orderedDate=ordered_date)
-        messages.info(request,"this item was added to your cart")
+        #messages.info(request,"this item was added to your cart")
 
 
 

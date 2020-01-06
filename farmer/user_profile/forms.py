@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('product_name', 'product_description', 'product_price','product_picture')
+        fields = ('product_name', 'product_description', 'stock','product_price','product_picture')
 
 class ReviewForm(forms.ModelForm):
     review_title = forms.CharField(max_length=30)
