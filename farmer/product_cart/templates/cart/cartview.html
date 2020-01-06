@@ -28,7 +28,12 @@
 
         {% for Citem in cart.items.all %}
 
-        <tr><td>{{ Citem.item }}</td><td>{{ Citem.quantity}}</td><td>{{ Citem.getSubTotal }}</td><td><a href={% url "remove-from-cart" Citem.item.id %}>remove from cart</a></td></tr>
+        <tr>
+        <td>{{ Citem.item }}</td>
+        <td>{{ Citem.quantity}}</td>
+        <td>{{ Citem.getSubTotal }}</td>
+        <td><a href={% url "remove-from-cart" Citem.item.id %}>remove from cart</a></td>
+        </tr>
         
         {% endfor %}
         <tr><td><b>Total: </b></td><td></td><td><b>{{ cart.getTotal }}</b></td></tr>

@@ -14,11 +14,10 @@ class OrderItem(models.Model):
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
-
+    orderItemCode = models.IntegerField(default=0)
 
     def __int__(self):
-        #return self.item.product_name
-        return self.id
+        return self.item.product_name
 
     def getSubTotal(self):
         return self.quantity * self.item.product_price
@@ -37,6 +36,7 @@ class Order(models.Model):
     orderedDate = models.DateTimeField()
 
 
+
     def __str__(self):
         return self.user.username
 
@@ -45,5 +45,3 @@ class Order(models.Model):
         for Order_item in self.items.all():
             total += Order_item.getSubTotal()
         return total
-
-

@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 
 
-@login_required
+@login_required(login_url='/login/login/')
 def add_to_cart(request, id):
     try:
         qty = request.GET.get('qty')
@@ -30,6 +30,7 @@ def add_to_cart(request, id):
             order = orderQS[0]
             if order.items.filter(item__id=item.id).exists():
                 order_item.quantity += iqty
+                order_item.orderItemCode = order.id
                 order_item.save()
                 messages.info(request,"this item quantity was updated")
                 return redirect("cartView")
@@ -37,6 +38,7 @@ def add_to_cart(request, id):
                 messages.info(request,"this item was added to your cart")
                 order.items.add(order_item)
                 order_item.quantity = iqty
+                order_item.orderItemCode = order.id
                 order_item.save()
                 return redirect("cartView")
         else:
@@ -44,12 +46,13 @@ def add_to_cart(request, id):
             order = Order.objects.create(user=request.user, orderedDate=ordered_date)
             order.items.add(order_item)
             order_item.quantity = iqty
+            order_item.orderItemCode = order.id
             order_item.save()
             messages.info(request,"this item was added to your cart")
             return redirect("cartView")
         
     
-@login_required
+@login_required(login_url='/login/login/')
 def remove_from_cart(request, id):
     item = get_object_or_404(Product, id=id)
     orderQS = Order.objects.filter(
@@ -74,23 +77,20 @@ def checkout(request):
     try:
         o = Order.objects.get(user=request.user, ordered=False)
         oi = OrderItem.objects.filter(user=request.user, ordered=False)
+        o.orderedDate = timezone.now()
         o.ordered = True
         oi.update(ordered=True)
         o.save()
     except:
         return redirect("cartView")
 
-    # stockUpdate = OrderItem.objects.filter(user=request.user, ordered=True)
-    # item = get_object_or_404(Product, id=id)
-
-    # updatedStock = stockUpdate.stock - stockUpdate.quantity
-    # stockUpdate.item.stock = updatedStock
-    # supdate.save()
+    
+    
 
     template = 'checkout/checkout.html'
     return render(request, template)
 
-
+@login_required(login_url='/login/login/')
 def cartView(request):
     orderQS = Order.objects.filter(user=request.user, ordered=False)
     if orderQS.exists():

@@ -1,0 +1,68 @@
+{% extends 'home_page/base.html' %} 
+
+{% load static %}
+
+
+
+    {% block content %}
+
+
+    <div class="cart_box">
+
+
+        <div class='col-sm-12 col-sm-offset-2'>
+
+        <table class='table'>
+        <thead>
+        <th>User</th>
+        <th>date created</th>
+        <th>checkout date</th>
+        </thead>
+
+        <tfoot>
+        <tr>
+        <td></td>
+        
+        </tr>
+        </tfoot>
+
+        {% for Ditem in OI.all %}
+        
+        <tr>
+        <td>{{ Ditem.user }}</td>
+        <td>{{ Ditem.creationDate }}</td>
+        <td>{{ Ditem.orderedDate }}</td>
+        </tr>
+        
+        {% endfor %}
+        </table>
+        </div>
+
+        <div class='col-sm-12 col-sm-offset-2'>
+        <table class='table'>
+        <thead>
+        <th>product</th>
+        <th>quantity</th>
+        <th>subtotal</th>
+        </thead>
+
+        <tfoot>
+        <tr>
+        <td></td>
+        
+        </tr>
+        </tfoot>
+        
+        {% for Citem in OIC.items.all %}
+        <tr>
+        <td>{{ Citem.item }}</td>
+        <td>{{ Citem.quantity}}</td>
+        <td>{{ Citem.getSubTotal }}</td>
+        </tr>
+        {% endfor %}
+        <tr><td><b>Total: </b></td><td></td><td><b>{{ OIC.getTotal }}</b></td></tr>
+        </table>
+        </div>
+
+    </div>
+    {% endblock %}
