@@ -60,16 +60,16 @@ def my_products(request):
     return render(request, template, {'profile':profile, 'product': products})
 
 def my_profile(request):
-    current_user = request.user.id
+    current_user = request.user.username
     template = 'farmer_page/my_profile.html'
-    profile = get_object_or_404(Farmer, pk=current_user)
+    profile = get_object_or_404(Farmer, name=current_user)
     context = {'profile':profile}
     return render(request, template, context)
 
 def update_profile(request):
     template = 'farmer_page/update_profile.html'
     if request.method == 'POST':
-        instance = get_object_or_404(Farmer, pk=request.user.id)
+        instance = get_object_or_404(Farmer, name=request.user.username)
         print(instance)
         update_form = UpdateUser(request.POST, instance=instance)
         print(update_form.errors)

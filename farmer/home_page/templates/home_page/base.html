@@ -6,7 +6,7 @@
     @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Anton|News+Cycle&display=swap');
     </style>
-  <title>{%block title%} - mysite {%endblock%}</title>
+  <title>{%block title%} Farmerstore {%endblock%}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
@@ -76,7 +76,7 @@
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
-                                    <a class="dropdown-item" href="{% url 'inbox_url' %}">Order History</a>
+                                    <a class="dropdown-item" href="{% url 'home_index' %}">Order History</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'logout_url' %}">Logout</a>
                                 </div>
@@ -101,6 +101,14 @@
     <div class="content">
     {% block content %}{% endblock %}
     </div>
+    		<footer class="footer-distributed">
+ 
+			<div class="footer-center">
+            <!--<img src="img/logo.png">-->
+  
+				<p class="footer-company-name">© 2020 Farmerstore</p>
+                <a href="{% url 'guidelines'  %}" style="text-align:right;text-decoration:none; color: white;">User Guidelines</a>
+			</div>
+		</footer>
 </body>
 </html>
-
