@@ -1,14 +1,14 @@
 import os
 from django.core.mail import send_mail
 from django.shortcuts import render
-from .models import Farmer
+from .models import Farmer, farmerReview
 from user_profile.models import Product
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, get_list_or_404, redirect
-from farmer_page.models import Farmer
+from farmer_page.models import Farmer, farmerReview
 from django.db.models import Q
 from user_profile.models import Product
-from farmer_page.forms import UpdateUser, ReportForm
+from farmer_page.forms import UpdateUser, ReportForm, FarmerForm
 from django.contrib import messages
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -23,9 +23,7 @@ def profile(request, id):
     # Report form and take id
     # Go to the farmer
     farmer = get_object_or_404(Farmer, pk=id)
-    context = {'farmer':farmer,
-                'prods':Product.objects.all()   
-    }
+    form2 = FarmerForm()
     if request.method == "POST":
         form = ReportForm(request.POST)
         if form.is_valid():
@@ -40,8 +38,16 @@ def profile(request, id):
             response = sg.send(message)
             print(response.status_code)
             messages.success(request, 'REPORTED!')
+        form2 = FarmerForm(request.POST)
+        if form2.is_valid():
+            title = form2.cleaned_data['review_title']
+            message = form2.cleaned_data['review_message']
+            id = request.POST['prodId']
+            print(id)
+            saving = farmerReview(review_title=title, review_message=message, review_farmer=id)
+            saving.save()
     form = ReportForm()
-    context = {'farmer':farmer,"form":form,}
+    context = {'info':farmer,'review': farmerReview.objects.all(),"form":form,'reviewform':form2,'prods':Product.objects.all()  }
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):

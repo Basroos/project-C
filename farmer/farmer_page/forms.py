@@ -1,5 +1,5 @@
 from django import forms
-from farmer_page.models import Farmer
+from farmer_page.models import Farmer, farmerReview
 
 class UpdateUser(forms.ModelForm):
     # email = forms.EmailField(
@@ -25,3 +25,11 @@ class ReportForm(forms.Form):
     from_email = forms.EmailField(required=True)
     subject = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
+
+class FarmerForm(forms.ModelForm):
+    review_title = forms.CharField(max_length=30)
+    review_message = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}), max_length=200)
+
+    class Meta:
+        model = farmerReview
+        fields = ('review_title', 'review_message')

@@ -1,9 +1,10 @@
 /* Fixed sidenav, full height */
 .sidenav {
-   background-color: #111;
+   background-color: white;
    overflow-x: hidden;
    padding-top: 20px;
    border-radius: 10px;
+   border: 1px solid lightgrey;
  }
  
  /* Style the sidenav links and the dropdown button */
@@ -13,7 +14,7 @@
    border-radius: 0;
    text-decoration: none;
    font-size: 20px;
-   color: #818181;
+   color: black !important;
    display: block;
    border: none;
    background: none;
@@ -35,10 +36,10 @@
   /*optional*/
   font-family: arial, sans-serif;
   /*input has OS specific font-family*/
-  color: white;
+  color: black;
   text-decoration: none;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 20px;
   width:90%;
  }
 
@@ -57,7 +58,7 @@
  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
  .dropdown-container {
    display: none;
-   background-color: #262626;
+   background-color: white;
    padding: 8px;
  }
 

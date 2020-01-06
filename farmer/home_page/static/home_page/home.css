@@ -64,13 +64,23 @@ p {
   padding: 2%;
 }
 
-#infodiv {
-  margin-left: 15%;
-  text-align: center;
+#container {
+  color: white;
   width: 70%;
-  height: auto;
-  background-color: #ffffff;
-  border: 1px solid black;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
+  font-family: sans-serif;
+}
+
+#container2 {
+  color: black;
+  width: 70%;
+  height: 260px;  
+  margin-left: 15%;
+  font-family: sans-serif;
 }
 
 #demo {
@@ -131,15 +141,10 @@ td {
   word-wrap: break-word;
 }
 
-
-
-
-
 .cart_box{
-
   display: block;
   margin-left: 10%;
-  margin-top: -5%;
+  margin-top: 2%;
   margin-bottom: 5%;
   width:80%;
   height:60%;
@@ -163,7 +168,6 @@ body {
 
 
 .checkout_box{
-
   display: block;
   margin-left: 10%;
   margin-top: -5%;
