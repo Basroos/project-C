@@ -19,3 +19,11 @@ class Farmer(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class farmerReview(models.Model):
+    review_title = models.CharField(max_length=30)
+    review_message = models.CharField(max_length=200)
+    review_farmer = models.IntegerField()
+
+    def __str__(self):
+        return "Farmer " + str(self.review_farmer) + "\ttitle " + self.review_title    

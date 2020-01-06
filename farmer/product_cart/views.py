@@ -98,7 +98,7 @@ def cartView(request):
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(user=request.user, orderedDate=ordered_date)
-        messages.info(request,"this item was added to your cart")
+        #messages.info(request,"this item was added to your cart")
 
 
 
