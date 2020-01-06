@@ -28,7 +28,7 @@ def registerView(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            fullname= form.cleaned_data.get('fullname')
+            fullname= form.cleaned_data.get('name')
             raw_pass = form.cleaned_data.get('password1')
             raw_pass = make_password(form.cleaned_data.get('password1'))
             email = form.cleaned_data.get('email')

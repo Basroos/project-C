@@ -47,8 +47,7 @@ def profile(request, id):
             saving = farmerReview(review_title=title, review_message=message, review_farmer=id)
             saving.save()
     form = ReportForm()
-    context = {'info':farmer,'review': farmerReview.objects.all(),"form":form,'reviewform':form2,'farmer':farmer,
-                'prods':Product.objects.all()  }
+    context = {'info':farmer,'review': farmerReview.objects.all(),"form":form,'reviewform':form2,'prods':Product.objects.all()  }
     return render(request, 'farmer_page/profile.html', context)
 
 def my_products(request):

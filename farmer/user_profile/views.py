@@ -23,8 +23,13 @@ def user_profile(request):
             saving = productReview(review_title=title, review_message=message, review_product=id)
             saving.save()
 
-    search = {"Vegetable": ["Mais", "Peach", "Brocolli", "Carrot", "Tomato"],
-              "Fruit": ["Banana", "Kiwi","Apple","Strawberry"]}
+    search = {"Vegetable": ["artichoke", "aubergine","asparagus","broccoflower","broccoli","brussels sprouts","cabbage","cauliflower","celery","endive","bok choy","kale","mustard greens","spinach","lettuce","arugula","mushrooms","radicchio","rhubarb","corn","topinambur","tat soi","tomato"],
+              "Legumes":["alfalfa","azuki beans","black beans","bean sprouts","black-eyed peas","green beans","kidney beans","lentils","peanuts","soy beans","peas"],
+              "Herbs":["anise","basil","caraway","coriander","chamomile","dill","fennel","lavender", "Cymbopogon","marjoram","oregano","parsley","rosemary","sage","thyme"],
+              "Onions":["Chives","Garlic","Leek","onion","shallot","scallion"],
+              "Peppers":["bell pepper","Jalapeño","Habanero","Paprika","Tabasco pepper","Cayenne pepper"],
+              "Root vegetables":["beetroot","carrot","celeriac","corms","ginger","parsnip","rutabaga","radish","wasabi","potato","sweet potato","yam","turnip"],
+              "Fruit": ["Banana", "Kiwi","Apple","Peach", "Strawberry"]}
     context = {'product': Product.objects.all(), 'review': productReview.objects.all(), "data": search,'navigation':'products', 'form': form, 'reviewform':form2}
     return render(request, template_name, context)
 
@@ -79,7 +84,6 @@ def delete_product(request, id):
 
     return render(request, template_name, {"product": products})
 
-
 def post_product(request):
     form = ProductForm()
     template_name = 'user_profile/add_product.html'
@@ -100,14 +104,3 @@ def post_product(request):
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
-
-def review_product(request):
-    form = ReviewForm()
-    if request.method == "POST":
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            title = form.cleaned_data['review_title']
-            message = form.cleaned_data['review_message']
-
-
-    return render(request, 'user_profile/product.html', {'reviews':reviews, 'reviewform':form})      
