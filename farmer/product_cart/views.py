@@ -108,3 +108,25 @@ def cartView(request):
     }
     template = "cart/cartview.html"
     return render(request, template, context)
+
+
+def OHistory(request):
+    OH = Order.objects.filter(user=request.user, ordered=True)
+
+    context = {
+        "OH": OH,
+    }
+    template = "orderhistory/OHistory.html"
+    return render(request, template, context)
+
+
+def orderInfo(request, id):
+    OI = Order.objects.filter(user=request.user, ordered=True, id=id)
+    OIC = Order.objects.get(user=request.user, ordered=True, id=id)
+
+    context = {
+        "OI": OI,
+        "OIC": OIC,
+    }
+    template = "orderhistory/orderInfo.html"
+    return render(request, template, context)

@@ -16,6 +16,11 @@
 
 <body>
     {% block content%}
+{% if messages %}
+{% for message in messages %}
+<h1 class="alert alert-success">{{message}}</h1>
+{% endfor %}
+{% endif %}
     <div id="second">
       <div id="container">
         <a href="{% url 'user-profile' %}">
@@ -27,31 +32,31 @@
         <div class="card" style="width: 15rem; float:left; background-color: white;">
           <img src="{% static 'home_page/mais.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <a href="" style="text-decoration:none; color:black;">Mais</a>
+            <a href="{% url 'quick-product' 'Mais' %}" style="text-decoration:none; color:black;">Mais</a>
           </div>
         </div>
         <div class="card" style="width: 15rem; float:left; margin-left:1%;">
           <img src="{% static 'home_page/broccoli.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <a href="#" style="text-decoration:none; color:black;">Broccoli</a>
+            <a href="{% url 'quick-product' 'broccoli' %}" style="text-decoration:none; color:black;">Broccoli</a>
           </div>
         </div>
         <div class="card" style="width: 15rem; float:left; margin-left:1%;">
           <img src="{% static 'home_page/graan.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <a href="#" style="text-decoration:none; color:black;">Wheat</a>
+            <a href="{% url 'quick-product' 'Wheat' %}" style="text-decoration:none; color:black;">Wheat</a>
           </div>
         </div>
         <div class="card" style="width: 15rem;; float:left; margin-left:1%;">
           <img src="{% static 'home_page/aardbei.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <a href="#" style="text-decoration:none; color:black;">Strawberry</a>
+            <a href="{% url 'quick-product' 'Strawberry' %}" style="text-decoration:none; color:black;">Strawberry</a>
           </div>
         </div>
         <div class="card" style="width: 15rem; float:left; margin-left:1%;">
           <img src="{% static 'home_page/kiwi.jpg' %}" class="card-img-top" alt="...">
           <div class="card-body">
-            <a href="#" style="text-decoration:none; color:black;">Kiwi Fruit</a>
+            <a href="{% url 'quick-product' 'Kiwifruit' %}" style="text-decoration:none; color:black;">Kiwi Fruit</a>
           </div>
         </div>
       </div>

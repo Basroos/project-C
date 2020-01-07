@@ -12,6 +12,7 @@
 </form>
 {%endblock search%} 
 {%block content%}
+
 <div class="container-fluid" style="background-color:white !important; border:1px solid black; width:80%; border-radius:10px;">
 <div class="container" style="padding:1%;">
   <div class="display-4 mx-auto text-center">
@@ -59,6 +60,50 @@
                   <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
                   {% else %}
                   <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
+                  {% endif %}
+                <div class="card-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>Product name</th>
+                        <td id="prodname" style="width: 30%">{{x.product_name}}</td>
+                      </tr>
+                      <tr>
+                        <th>Description</th>
+                        <td style="width: 30%">{{x.product_description}}</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td style="width: 30%">{{x.product_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="card-text"><small class="text-muted">Uploaded by: Farmer {{x.product_user}}, 1 minutes ago</small></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>      
+  </div>  
+</div>
+{% elif quick_product %}
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12">
+      <div class="container">
+        <div class="row">  
+          {% for x in quick_product %}
+          <div class="col-md-4 mt-2">
+            <div class="card" style="width:100% !important;">
+              <a href="#" class="stretched-link" style="color:black;text-decoration: none;">
+                  {% if prod.product_picture %}
+                    <img class="card-img-top" src="{{ x.product_picture.url }}" alt="Card image cap" />
+                    {% else %}
+                    <img class="card-img-top" src="{% static 'home_page/mais.jpg' %}" alt="Card image cap" />
                   {% endif %}
                 <div class="card-body">
                   <table class="table">
@@ -150,9 +195,7 @@
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+      
     <div class="modal fade" id="myModal{{ prod.id }}" role="dialog">
     <div class="modal-dialog modal-lg">
       {% csrf_token %}
@@ -162,7 +205,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
          <div class="modal-body"> 
-          <div class="card">
+          <div class="card" style="width:100% !important;">
             <a class="stretched-link open-modal" style="color:black;text-decoration: none;">
               {% if prod.product_picture %}
                   <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />

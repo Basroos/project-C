@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.home_index, name='home_index'),
     path('login/', views.login_index, name='login_index'),
     path("logout/", LogoutView.as_view(), name="logout_url"),
+    path('product/<str:prodname>', views.quick_product, name='quick-product'),
     path('guidelines/', views.guidelines, name='guidelines'),
 ]
 

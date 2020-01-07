@@ -23,7 +23,7 @@ def user_profile(request):
             saving = productReview(review_title=title, review_message=message, review_product=id)
             saving.save()
 
-    search = {"Vegetable": ["artichoke", "aubergine","asparagus","broccoflower","broccoli","brussels sprouts","cabbage","cauliflower","celery","endive","bok choy","kale","mustard greens","spinach","lettuce","arugula","mushrooms","Wheat","radicchio","rhubarb","corn","topinambur","tat soi","tomato"],
+    search = {"Vegetable": ["artichoke", "aubergine","asparagus","broccoflower","broccoli","brussels sprouts","cabbage","cauliflower","celery","endive","bok choy","kale","mustard greens","spinach","lettuce","arugula","mushrooms","Mais","Wheat","radicchio","rhubarb","corn","topinambur","tat soi","tomato"],
               "Legumes":["alfalfa","azuki beans","black beans","bean sprouts","black-eyed peas","green beans","kidney beans","lentils","peanuts","soy beans","peas"],
               "Herbs":["anise","basil","caraway","coriander","chamomile","dill","fennel","lavender", "Cymbopogon","marjoram","oregano","parsley","rosemary","sage","thyme"],
               "Onions":["Chives","Garlic","Leek","onion","shallot","scallion"],
@@ -64,7 +64,9 @@ def category_products(request):
         result = Product.objects.filter(product_name__in=category)
 
     elif category == "Fruit":
-        category = ["Banana", "Kiwi", "Apple","Strawberry",]
+        category = ["Açaí","Akee","Apple","Apricot","Avocado","Banana","Blackberry","Blackcurrant","Blueberry","Crab apple","Cherry","Coconut","Cranberry","Date","Dragonfruit","Grape",
+              "Grapefruit","Guava","Kiwifruit","Lemon","Lime","Lychee","Mango","Cataloupe Melon","Watermelon","Honeydew Melon","Nectarine","Blood orange","Mandarine","Clementine Orange","Papaya",
+              "Passionfruit","Peach","Pear","Persimmon","Plantain","Prune","Pineapple","Plumcot","Pomegranate","Pomelo","Raspberry","Redcurrant","Strawberry","White currant"]
         result = Product.objects.filter(product_name__in=category)
         pass
 
@@ -126,3 +128,5 @@ def post_product(request):
         else:
             form = ProductForm()
     return render(request, template_name, {'form':form})
+
+

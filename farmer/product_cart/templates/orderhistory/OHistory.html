@@ -1,0 +1,42 @@
+{% extends 'home_page/base.html' %} 
+
+{% load static %}
+
+
+
+    {% block content %}
+
+
+    <div class="cart_box">
+
+
+        <div class='col-sm-12 col-sm-offset-2'>
+
+            <table class='table'>
+                <thead>
+                    <th>User</th>
+                    <th>date created</th>
+                    <th>checkout date</th>
+                </thead>
+        
+                <tfoot>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tfoot>
+        
+                {% for Citem in OH.all %}
+        
+                <tr>
+                    <td>{{ Citem.user }}</td>
+                    <td>{{ Citem.creationDate }}</td>
+                    <td>{{ Citem.orderedDate }}</td>
+                    <td><a href={% url "orderInfo" Citem.id %}>more info</a></td>
+                </tr>
+        
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+    {% endblock %}

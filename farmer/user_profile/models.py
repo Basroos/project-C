@@ -17,7 +17,7 @@ CHOICES = (
     ("celery","celery"),
     ("endive","endive"),
     ("bok choy","bok choy"),
-    ("kale","kale"),("mustard greens","mustard greens"),("spinach","spinach"),("lettuce","lettuce"),("arugula","arugula"),("mushrooms","mushrooms"),("wheat","wheat"),("radicchio","radicchio"),("rhubarb","rhubarb"),("corn","corn"),("topinambur","topinambur"),("tat soi","tat soi"),("tomato","tomato"),
+    ("kale","kale"),("mustard greens","mustard greens"),("spinach","spinach"),("lettuce","lettuce"),("arugula","arugula"),("mushrooms","mushrooms"),("Mais","Mais"),("wheat","wheat"),("radicchio","radicchio"),("rhubarb","rhubarb"),("corn","corn"),("topinambur","topinambur"),("tat soi","tat soi"),("tomato","tomato"),
     ("alfalfa","alfalfa"),("azuki beans","azuki beans"),("black beans","black beans"),("bean sprouts","bean sprouts"),("black-eyed peas","black-eyed peas"),("green beans","green beans"),("kidney beans","kidney beans"),("lentils","lentils"),("peanuts","peanuts"),("soy beans","soy beans"),("peas","peas"),
     ("anise","anise"),("basil","basil"),("caraway","caraway"),("coriander","coriander"),("chamomile","chamomile"),("dill","dill"),("fennel","fennel"),("lavender","lavender"),("Cymbopogon","Cymbopogon"),("marjoram","marjoram"),("oregano","oregano"),("parsley","parsley"),("rosemary","rosemary"),("sage","sage"),("thyme","thyme"),
     ("Chives","Chives"),("Garlic","Garlic"),("Leek","Leek"),("onion","onion"),("shallot","shallot"),("scallion","scallion"),
