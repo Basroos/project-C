@@ -23,9 +23,9 @@
   <!--Grid column-->
 
   <!--Grid column-->
-  <div class="col-md-6 mb-4">
-    <div id="general_info" class="card">
-      <div class="card-body" class="table-responsive-sm">
+  <div class="col-lg-6 mb-4 col-md-12">
+    <div id="general_info" class="card" style="width:100% !important;">
+      <div class="card-body" class="table-responsive-md">
         <h4 class="card-title">General info</h4>
           <table class="table">
             <tbody>
@@ -63,9 +63,11 @@
                 </tr>
             </tbody>
         </table>
-          <a href="{% url 'update-profile' %}"class="btn btn-primary">Update your profile</a></a>
+        <a href="{% url 'update-profile' %}"class="btn btn-primary">Update your profile</a></a>
       </div>
     </div>
   </div>
+</div>
+</div>
 </body>
 {%endblock content%}

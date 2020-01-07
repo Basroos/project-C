@@ -12,12 +12,12 @@
   <br>
   <div class="row">
     {% if product %}
-    <div class="col-md-8 mt-2">
+    <div class="col-lg-8 mt-2 col-md-12">
       <div class="container">
         <div class="row">
           {% for prod in product %}
-          <div class="col-md-6 mt-2">
-            <div class="card">
+          <div class="col-lg-6 mt-2 col-md-12">
+            <div class="card" style="width:100% !important;">
               <a href="#" class="" style="color:black;text-decoration: none;">
                   {% if prod.product_picture %}
                   <img class="card-img-top" src="{{ prod.product_picture.url }}" alt="Card image cap" />
@@ -58,11 +58,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 mt-2">
-      <div class="container">
+    <div class="col-lg-4 mt-2 col-md-12">
         <div class="row">
           <div class="col-md-12 ml-auto mr-2">
-            <div class="card">
+            <div class="card" style="width:100% !important;">
               <h5 class="card-header">
                 Add Product
               </h5>
