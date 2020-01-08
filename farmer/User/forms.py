@@ -10,7 +10,7 @@ class SignUpForm(UserCreationForm):
     farm = forms.CharField(max_length=30, required=False, help_text='Enter the name of your farm/company')
     phone_number = forms.CharField(max_length=10,help_text='Enter a valid phone number')
     address = forms.CharField(
-        max_length=10, help_text='Enter a valid address')
+        max_length=100, help_text='Enter a valid address')
     age = forms.CharField(
     max_length=2, help_text='Enter your age')
     province = forms.CharField(
